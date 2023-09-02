@@ -4,12 +4,12 @@ import DataCard from "./DataCard.jsx"
 
 const DataTable = () => {
 
-    const [dataApi, getApi, createApi] = useFetch()
+    const {dataApi, getData,} = useFetch()
     const [selectSucursal, setSelectSucursal] = useState("Todos")
     const [showData, setShowData] = useState()
 
     useEffect(() => {
-        getApi()
+        getData()
     }, [])
 
     console.log(dataApi)

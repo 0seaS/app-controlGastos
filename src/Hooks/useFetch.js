@@ -24,10 +24,19 @@ const useFetch = () => {
 
   function createDB(e){
     let dataBase = e.target.result;
-    let almacen = dataBase.createObjectStore("ingresos", {keyPath: "id"});
-    almacen.createIndex("BuscarRazon", "razon", {unique: false});
+    let tabla1 = dataBase.createObjectStore("caja", {keyPath: "id"});
+    let tabla2 = dataBase.createObjectStore("gastos", {keyPath: "id"});
     startDB()
   }
+
+  /**** FUNCION DE CREADO DB ****/
+
+  // function createDB(e){
+  //   let dataBase = e.target.result;
+  //   let almacen = dataBase.createObjectStore("ingresos", {keyPath: "id"});
+  //   almacen.createIndex("BuscarRazon", "razon", {unique: false});
+  //   startDB()
+  // }
 
   // READ
 
@@ -120,13 +129,17 @@ function generarData(evento){
 
   // CREATE
 
-  function createRegister(data){
-    let transaccion = db.transaction(["ingresos"], "readwrite");
-    let almacen = transaccion.objectStore("ingresos");
-    almacen.add(data);
+  function createRegister(data1, data2){
+    let transaccion1 = db.transaction(["caja"], "readwrite");
+    let almacen1 = transaccion1.objectStore("caja");
+    almacen1.add(data1);
+    let transaccion2 = db.transaction(["gastos"], "readwrite");
+    let almacen2 = transaccion2.objectStore("gastos");
+    almacen2.add(data2);
+
   }
 
-  return [dataApi, getData, createRegister, startDB]
+  return {dataApi, getData, createRegister, startDB}
   
 }
 
