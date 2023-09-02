@@ -4,6 +4,7 @@ const useFetch = () => {
 
   const [dataApi, setDataApi] = useState()
   const [db, setDb] = useState()
+  const [testDataApi, setTestDataApi] = useState([])
   let showData = []
 
   function startDB(){
@@ -25,7 +26,7 @@ const useFetch = () => {
   function createDB(e){
     let dataBase = e.target.result;
     let tabla1 = dataBase.createObjectStore("caja", {keyPath: "id"});
-    let tabla2 = dataBase.createObjectStore("gastos", {keyPath: "id"});
+
     startDB()
   }
 
@@ -102,15 +103,15 @@ const useFetch = () => {
   }
   /**** ALTERNO ****/
 
-  /*
-  function getData(){
+  
+  function test(){
     getIncomes()
-    setDataApi(showData)
+    setTestDataApi(showData)
   }
 
   function getIncomes(){
-    let transaccion = db.transaction(["ingresos"]);
-    let almacen = transaccion.objectStore("ingresos");
+    let transaccion = db.transaction(["caja"]);
+    let almacen = transaccion.objectStore("caja");
 
     let puntero = almacen.openCursor();
     
@@ -122,24 +123,23 @@ function generarData(evento){
     if(puntero)
     {
         showData.push(puntero.value)
+        //setTestDataApi([...testDataApi, puntero.value])
         puntero.continue();
     }
 }
-*/
+
 
   // CREATE
 
-  function createRegister(data1, data2){
+  function createRegister(data1){
+    
     let transaccion1 = db.transaction(["caja"], "readwrite");
     let almacen1 = transaccion1.objectStore("caja");
     almacen1.add(data1);
-    let transaccion2 = db.transaction(["gastos"], "readwrite");
-    let almacen2 = transaccion2.objectStore("gastos");
-    almacen2.add(data2);
 
   }
 
-  return {dataApi, getData, createRegister, startDB}
+  return {dataApi, getData, createRegister, startDB, test, testDataApi}
   
 }
 

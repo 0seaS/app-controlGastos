@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AddGasto from "./addGasto"
+import useFetch from "../Hooks/useFetch"
 
 const AddRegister = () => {
 
     const [gastosList, setGastosList] = useState([])
+    const {createRegister, startDB} = useFetch()
 
+    useEffect(()=>{
+        startDB()
+    },[])
+    
     function handleAgregarGastos(){
 
         const gasto = {
@@ -23,16 +29,22 @@ const AddRegister = () => {
         e.preventDefault()
 
         let suc = document.getElementById("select-sucursal");
+        const aux = gastosList.map(data => Object.values(data)).toString()
 
         const registro = {
             sucursal: suc.options[suc.selectedIndex].value,
             caja: document.querySelector("#caja").value,
             fecha: document.querySelector("#date").value,
-            gastos: gastosList,
+            gastos: aux,
+            /*gastos: gastosList,*/
             id: generateUUID()
         }
 
         // Aqui va la insersion
+        
+        createRegister(registro)
+
+        console.log(aux)
         console.log(registro)
 
         //Reset de datos

@@ -4,11 +4,12 @@ import DataCard from "./DataCard.jsx"
 
 const DataTable = () => {
 
-    const {dataApi, getData,} = useFetch()
+    const {dataApi, getData, startDB, test, testDataApi} = useFetch()
     const [selectSucursal, setSelectSucursal] = useState("Todos")
     const [showData, setShowData] = useState()
 
     useEffect(() => {
+        startDB()
         getData()
     }, [])
 
@@ -40,9 +41,15 @@ const DataTable = () => {
 
     console.log(showData)
 
+    function handleMostrarData(){
+        test()
+        console.log(testDataApi)
+    }
+
   return (
     <article>
         <header>
+            <button onClick={handleMostrarData}>mostrar temp</button>
             <h2>Lista de Gastos {selectSucursal}</h2>
         </header>
         <section>
