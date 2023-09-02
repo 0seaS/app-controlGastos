@@ -4,7 +4,7 @@ import DataCard from "./DataCard.jsx"
 
 const DataTable = () => {
 
-    const {dataApi, getData, startDB, test, testDataApi} = useFetch()
+    const {dataApi, getData, startDB, actualizeData} = useFetch()
     const [selectSucursal, setSelectSucursal] = useState("Todos")
     const [showData, setShowData] = useState()
 
@@ -13,22 +13,21 @@ const DataTable = () => {
         getData()
     }, [])
 
-    console.log(dataApi)
-
     useEffect(() => {
-        if (dataApi) {
+        
+        if (dataApi != []) {
             if (selectSucursal === "Villa") {
-                const show = dataApi.filter(data => data.sucursal === "Villa")
+                let show = dataApi.filter(data => data.sucursal == "villa")
                 console.log(show)
                 setShowData(show)
             }
             if(selectSucursal === "Chimore") {
-                const show = dataApi.filter(data => data.sucursal === "Chimore")
+                let show = dataApi.filter(data => data.sucursal == "chimore")
                 console.log(show)
                 setShowData(show)
             }
             if(selectSucursal === "Sacaba") {
-                const show = dataApi.filter(data => data.sucursal === "Sacaba")
+                let show = dataApi.filter(data => data.sucursal == "sacaba")
                 console.log(show)
                 setShowData(show)
             }
@@ -36,34 +35,44 @@ const DataTable = () => {
                 setShowData(dataApi)
             }
         }
+        else{
+            getData()
+        }
         
-    }, [dataApi])
+    }, [dataApi], selectSucursal)
 
+    console.log(dataApi)
+    console.log(selectSucursal)
     console.log(showData)
 
-    function handleMostrarData(){
-        test()
-        console.log(testDataApi)
+    function handleSacaba(){
+        actualizeData()
+        setSelectSucursal("Sacaba")
+    }
+    function handleVilla(){
+        actualizeData()
+        setSelectSucursal("Villa")
+    }
+    function handleChimore(){
+        actualizeData()
+        setSelectSucursal("Chimore")
     }
 
   return (
     <article>
+        <button onClick={handleSacaba}>Sacaba</button><button onClick={handleVilla}>Villa Tunari</button><button onClick={handleChimore}>Chimore</button>
         <header>
-            <button onClick={handleMostrarData}>mostrar temp</button>
             <h2>Lista de Gastos {selectSucursal}</h2>
         </header>
         <section>
             <div>
                 {
-
                     showData?.map(register => (
                         <DataCard
                             key={register.id}
                             bodyData={register}
                         />
                     ))
-
-                    
                 }
             </div>
             <span></span>

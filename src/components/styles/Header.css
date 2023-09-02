@@ -1,0 +1,38 @@
+.main-header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    color: red;
+    background: rgba(32, 30, 30, 0.671);
+    font-size: 1.5em;
+}
+.logo-container{
+    flex-grow: 3;
+    height: inherit;
+    overflow: hidden;
+    align-content: center;
+}
+.logo{
+    max-width: 250px;
+    width: 150;
+    position: relative;
+    top: -50px;
+    margin-left: 2em;
+}
+
+nav{
+    flex-grow: 1;
+}
+
+nav>ul{
+    display: flex;
+    justify-content: space-around;
+    gap: 1em;
+}
+
+nav>ul>li{
+    cursor: pointer;
+}
+    

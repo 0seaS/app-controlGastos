@@ -2,7 +2,11 @@ import BodyCard from "./BodyCard"
 
 const DataCard = ({bodyData}) => {
 
+    let gastos1 = bodyData?.gastos.split(',')
+
     console.log(bodyData)
+
+
   return (
     <>
     
@@ -12,14 +16,17 @@ const DataCard = ({bodyData}) => {
         </div>
         <div>
             <h3>Gastos</h3>
-            {
-                bodyData?.gastos.map(register => (
-                    <BodyCard
-                        key={register.razon}
-                        data={register}
-                    />
-                ))
-            }
+            <div>
+                {
+                    
+                    gastos1?.map((register, ind) => (
+                        <BodyCard
+                            key={ind}
+                            data={register}
+                        />
+                    ))
+                }
+            </div>
         </div>
     </>
   )

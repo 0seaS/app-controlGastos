@@ -4,7 +4,6 @@ const useFetch = () => {
 
   const [dataApi, setDataApi] = useState()
   const [db, setDb] = useState()
-  const [testDataApi, setTestDataApi] = useState([])
   let showData = []
 
   function startDB(){
@@ -41,93 +40,98 @@ const useFetch = () => {
 
   // READ
 
-  const getData = () => {
-    setDataApi([{
-      id: 1,
-      caja: 1200,
-      fecha: "2023-09-01",
-      sucursal: "sacaba",
-      gastos: [{razon:"compras",
-               monto:25
-              },
-              {razon:"pan",
-               monto:5
-              },
-              {razon:"huevo",
-               monto:15
-              },
-              {razon:"gas",
-               monto:25
-              },
-            ]
-    },
-    {
-      id: 2,
-      caja: 900,
-      fecha: "2023-08-31",
-      sucursal: "chimore",
-      gastos: [{razon:"compras",
-               monto:25
-              },
-              {razon:"pan",
-               monto:5
-              },
-              {razon:"huevo",
-               monto:15
-              },
-              {razon:"gas",
-               monto:25
-              },
-            ]
-    },
-    {
-      id: 3,
-      caja: 1500,
-      fecha: "2023-08-30",
-      sucursal: "chimore",
-      gastos: [{razon:"compras",
-               monto:25
-              },
-              {razon:"pan",
-               monto:5
-              },
-              {razon:"huevo",
-               monto:15
-              },
-              {razon:"gas",
-               monto:25
-              }
-            ]
-    }
-    ])
-  }
+  // const getData = () => {
+  //   setDataApi([{
+  //     id: 1,
+  //     caja: 1200,
+  //     fecha: "2023-09-01",
+  //     sucursal: "sacaba",
+  //     gastos: [{razon:"compras",
+  //              monto:25
+  //             },
+  //             {razon:"pan",
+  //              monto:5
+  //             },
+  //             {razon:"huevo",
+  //              monto:15
+  //             },
+  //             {razon:"gas",
+  //              monto:25
+  //             },
+  //           ]
+  //   },
+  //   {
+  //     id: 2,
+  //     caja: 900,
+  //     fecha: "2023-08-31",
+  //     sucursal: "chimore",
+  //     gastos: [{razon:"compras",
+  //              monto:25
+  //             },
+  //             {razon:"pan",
+  //              monto:5
+  //             },
+  //             {razon:"huevo",
+  //              monto:15
+  //             },
+  //             {razon:"gas",
+  //              monto:25
+  //             },
+  //           ]
+  //   },
+  //   {
+  //     id: 3,
+  //     caja: 1500,
+  //     fecha: "2023-08-30",
+  //     sucursal: "chimore",
+  //     gastos: [{razon:"compras",
+  //              monto:25
+  //             },
+  //             {razon:"pan",
+  //              monto:5
+  //             },
+  //             {razon:"huevo",
+  //              monto:15
+  //             },
+  //             {razon:"gas",
+  //              monto:25
+  //             }
+  //           ]
+  //   }
+  //   ])
+  // }
   /**** ALTERNO ****/
 
   
-  function test(){
+  function getData(){
     getIncomes()
-    setTestDataApi(showData)
+    setDataApi(showData)
+    console.log(showData)
+    console.log(dataApi)
   }
 
-  function getIncomes(){
-    let transaccion = db.transaction(["caja"]);
-    let almacen = transaccion.objectStore("caja");
+  async function getIncomes(){
+    let transaccion = await db?.transaction(["caja"]);
+    let almacen = await transaccion?.objectStore("caja");
 
-    let puntero = almacen.openCursor();
+    let puntero = await almacen?.openCursor();
     
-    puntero.addEventListener("success", generarData);
+    puntero?.addEventListener("success", generarData);
 }
 
-function generarData(evento){
-    var puntero = evento.target.result;
+async function generarData(evento){
+    var puntero = await evento?.target.result;
     if(puntero)
     {
-        showData.push(puntero.value)
+        showData.push(puntero?.value)
         //setTestDataApi([...testDataApi, puntero.value])
         puntero.continue();
     }
 }
 
+function actualizeData(){
+  setDataApi(showData)
+}
 
   // CREATE
 
@@ -139,7 +143,9 @@ function generarData(evento){
 
   }
 
-  return {dataApi, getData, createRegister, startDB, test, testDataApi}
+  // antiguo
+  //return {dataApi, getData, createRegister, startDB, test, testDataApi}
+  return {dataApi, getData, createRegister, startDB, actualizeData}
   
 }
 

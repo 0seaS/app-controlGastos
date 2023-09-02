@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import AddGasto from "./addGasto"
 import useFetch from "../Hooks/useFetch"
+import "./styles/AddRegister.css"
 
 const AddRegister = () => {
 
@@ -63,46 +64,55 @@ const AddRegister = () => {
         return uuid;
     }
 
-    console.log(gastosList)
-
   return (
     <>
-    <form onClick={e => e.stopPropagation()} onSubmit={handleRegistrar}>
-        <h2>Ingrese los Datos</h2>
-        <label htmlFor="select-sucursal">Sucursal </label>
-        <select name="sucursal" id="select-sucursal" required>
-            <option value="villa">Villa</option>
-            <option value="chimore">Chimore</option>
-            <option value="sacaba">Sacaba</option>
-        </select>
-        <label htmlFor="caja">Cantidad en Caja </label>
-        <input type="number" id="caja" min="0" step=".01" required></input>
-        <label htmlFor="date">Fecha </label>
-        <input type="date" id="date" required></input>
-        <button type="submit">Registrar</button>
-    </form >
-        <h3>Gastos del dia</h3>
-        <div id="mostrar-gastos">
-            {
-                gastosList.length>0 
-                ? gastosList.map(gasto => (
-                    <AddGasto 
-                    key={gasto.razon}
-                    gasto={gasto}
-                    setGastosList={setGastosList}
-                    gastosList={gastosList}
-                    />                  
-                ))
-                : <h3>Sin gastos </h3>
-            }
-        </div>
-        <div>
-            <h3>Añadir Gastos</h3>
-            <label htmlFor="reason">Razon </label>
-            <input type="text" id="reason" placeholder="Ingrese la Razon" required></input>
-            <label htmlFor="amountOutcome">Cantidad </label>
-            <input type="number" id="amountOutcome" min="0" step=".01" required></input>
-            <button onClick={handleAgregarGastos}>Agregar Gasto</button>
+        
+        <div className="register__container">
+            <h2>registro de caja</h2>
+
+            <div className="gastos__form">
+                <h3 className="gastos__form-title">Añadir Gastos</h3>
+                <label htmlFor="reason">Razon </label>
+                <input type="text" id="reason" placeholder="Ingrese la Razon" required></input>
+                <label htmlFor="amountOutcome">Monto </label>
+                <input type="number" id="amountOutcome" placeholder="Monto en Bs" min="0" step=".01" required></input>
+                <button className="btn-agregarGasto" onClick={handleAgregarGastos}>Agregar Gasto</button>
+            </div>
+            <h3 className="gastos__title">Gastos del dia</h3>
+            <div className="gastos__container" id="mostrar-gastos">
+                {
+                    gastosList.length>0 
+                    ? gastosList.map(gasto => (
+                        <AddGasto 
+                        key={gasto.razon}
+                        gasto={gasto}
+                        setGastosList={setGastosList}
+                        gastosList={gastosList}
+                        />                  
+                    ))
+                    : <span>Sin gastos </span>
+                }
+            </div>
+
+            <form className="register__form" onClick={e => e.stopPropagation()} onSubmit={handleRegistrar}>
+                <div className="register__body">
+                <h3 className="form__title">Ingrese los Datos de Caja</h3>
+                <label htmlFor="select-sucursal">Sucursal </label>
+                <select name="sucursal" id="select-sucursal" required>
+                    <option value="villa">Villa</option>
+                    <option value="chimore">Chimore</option>
+                    <option value="sacaba">Sacaba</option>
+                </select>
+                <label htmlFor="caja">Cantidad en Caja </label>
+                <input type="number" id="caja" placeholder="Monto en Bs" min="0" step=".01" required></input>
+                <label htmlFor="date">Fecha </label>
+                <input type="date" id="date" required></input>
+                <button className="btn-submit" type="submit">Registrar</button>
+                </div>
+            </form >
+
+        
+            
         </div>
     </>
   )
