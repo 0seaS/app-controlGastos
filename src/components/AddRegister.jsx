@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import AddGasto from "./addGasto"
+import AddGasto from "./AddGasto"
 import useFetch from "../Hooks/useFetch"
 import "./styles/AddRegister.css"
 
