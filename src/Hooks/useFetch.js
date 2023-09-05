@@ -102,35 +102,98 @@ const useFetch = () => {
   // }
   /**** ALTERNO ****/
 
-  
-  function getData(){
-    getIncomes()
-    setDataApi(showData)
-    console.log(showData)
-    console.log(dataApi)
-  }
+  //test 1
+//   function getData(){
+//     getIncomes()
+//     setDataApi(showData)
+//     console.log(showData)
+//     console.log(dataApi)
+//   }
 
-  async function getIncomes(){
-    let transaccion = await db?.transaction(["caja"]);
-    let almacen = await transaccion?.objectStore("caja");
+//   async function getIncomes(){
+//     let transaccion = await db?.transaction(["caja"]);
+//     let almacen = await transaccion?.objectStore("caja");
 
-    let puntero = await almacen?.openCursor();
+//     let puntero = await almacen?.openCursor();
     
-    puntero?.addEventListener("success", generarData);
-}
+//     puntero?.addEventListener("success", generarData);
+// }
 
-async function generarData(evento){
-    var puntero = await evento?.target.result;
-    if(puntero)
-    {
-        showData.push(puntero?.value)
-        //setTestDataApi([...testDataApi, puntero.value])
-        puntero.continue();
+
+function getData(){
+  var request = indexedDB.open("control-tienda");
+  request.onsuccess = function(e) {
+    let auxDB =  e.target.result;
+    let transaccion = auxDB.transaction(["caja"]);
+    transaccion.oncomplete = (ev) => {
+
+    }
+    let almacen = transaccion.objectStore("caja");
+    let getReq = almacen.getAll()
+    getReq.onsuccess = (ev) => {
+      let dataApiBD = ev.target
+      setDataApi(dataApiBD.result)
+    }
+    getReq.onerror = (err) => {
+      console.log(err)
     }
 }
+}
 
-function actualizeData(){
-  setDataApi(showData)
+
+// function getData(){
+//   showData = []
+//   getIncomes()
+//   let aux = []
+//   for (let i = 0; i < showData.length; i++) {
+//     if (i%2==0) {
+//       aux.push(showData[i])
+//     } 
+//   }
+//   setTimeout(() => {
+//       console.log("Delayed for 1 second.");
+//     }, "1000");
+//   setDataApi(aux)
+  
+//   console.log(showData)
+//   console.log(dataApi)
+// }
+
+// function getIncomes(){
+//   var request = indexedDB.open("control-tienda");
+//   request.onsuccess = function(e) {
+   
+
+
+
+//     let puntero = almacen.openCursor();
+    
+//     puntero.addEventListener("success", generarData);
+//   }
+
+//   request.onerror = function(e) {
+//     console.log("Error Getting: ", e);
+//   }
+// }
+
+// function generarData(evento){
+//     var puntero = evento.target.result;
+//     if(puntero)
+//     {
+//         showData.push(puntero.value)
+//         //setTestDataApi([...testDataApi, puntero.value])
+//         puntero.continue();
+//     }
+// }
+
+function actualizarData(){
+  let aux = []
+  for (let i = 0; i < showData.length; i++) {
+    if (i%2==0) {
+      aux.push(showData[i])
+    } 
+  }
+  setDataApi(aux)
 }
 
   // CREATE
@@ -145,7 +208,7 @@ function actualizeData(){
 
   // antiguo
   //return {dataApi, getData, createRegister, startDB, test, testDataApi}
-  return {dataApi, getData, createRegister, startDB, actualizeData}
+  return {dataApi, getData, createRegister, startDB, actualizarData}
   
 }
 

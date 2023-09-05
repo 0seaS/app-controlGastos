@@ -1,4 +1,4 @@
-
+import "./styles/AddGasto.css"
 
 const AddGasto = ({gasto, setGastosList, gastosList}) => {
 
@@ -7,8 +7,8 @@ const AddGasto = ({gasto, setGastosList, gastosList}) => {
     }
 
   return (
-    <div>
-        <span>{gasto.razon}</span><span>{gasto.monto}</span><button onClick={handleQuitarGasto}>quitar</button>
+    <div className="gasto__container">
+        <span>{gasto.razon} </span><span>{gasto.monto} Bs.</span><span><button className="btn-addGasto" onClick={handleQuitarGasto}>X</button></span>
     </div> 
   )
 }

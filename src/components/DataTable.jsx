@@ -4,7 +4,7 @@ import DataCard from "./DataCard.jsx"
 
 const DataTable = () => {
 
-    const {dataApi, getData, startDB, actualizeData} = useFetch()
+    const {dataApi, getData, startDB, actualizarData} = useFetch()
     const [selectSucursal, setSelectSucursal] = useState("Todos")
     const [showData, setShowData] = useState()
 
@@ -13,48 +13,44 @@ const DataTable = () => {
         getData()
     }, [])
 
+    console.log(showData)
+
     useEffect(() => {
-        
-        if (dataApi != []) {
+        let show
+
             if (selectSucursal === "Villa") {
-                let show = dataApi.filter(data => data.sucursal == "villa")
+                console.log(dataApi)
+                show = dataApi.filter(data => data.sucursal == "villa")
                 console.log(show)
                 setShowData(show)
             }
-            if(selectSucursal === "Chimore") {
-                let show = dataApi.filter(data => data.sucursal == "chimore")
+            else if(selectSucursal === "Chimore") {
+                console.log(dataApi)
+                show = dataApi.filter(data => data.sucursal == "chimore")
                 console.log(show)
                 setShowData(show)
             }
-            if(selectSucursal === "Sacaba") {
-                let show = dataApi.filter(data => data.sucursal == "sacaba")
+            else if(selectSucursal === "Sacaba") {
+                console.log(dataApi)
+                show = dataApi.filter(data => data.sucursal == "sacaba")
                 console.log(show)
                 setShowData(show)
             }
             else{
                 setShowData(dataApi)
             }
-        }
-        else{
-            getData()
-        }
         
-    }, [dataApi], selectSucursal)
 
-    console.log(dataApi)
-    console.log(selectSucursal)
-    console.log(showData)
+        
+    }, [dataApi, selectSucursal])
 
     function handleSacaba(){
-        actualizeData()
         setSelectSucursal("Sacaba")
     }
     function handleVilla(){
-        actualizeData()
         setSelectSucursal("Villa")
     }
     function handleChimore(){
-        actualizeData()
         setSelectSucursal("Chimore")
     }
 

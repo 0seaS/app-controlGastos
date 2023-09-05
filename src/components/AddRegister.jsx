@@ -68,7 +68,7 @@ const AddRegister = () => {
     <>
         
         <div className="register__container">
-            <h2>registro de caja</h2>
+            <h2>Registro de caja</h2>
 
             <div className="gastos__form">
                 <h3 className="gastos__form-title">Añadir Gastos</h3>

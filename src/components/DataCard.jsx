@@ -4,9 +4,6 @@ const DataCard = ({bodyData}) => {
 
     let gastos1 = bodyData?.gastos.split(',')
 
-    console.log(bodyData)
-
-
   return (
     <>
     

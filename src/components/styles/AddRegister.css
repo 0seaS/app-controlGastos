@@ -82,3 +82,17 @@
 .btn-agregarGasto:hover{
     scale: 1.1;
 }
+
+.gastos__title{
+    max-width: 80%;
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.gastos__container{
+    max-width: 90%;
+    width: 350px;
+    margin: 0 auto;
+    text-align: left;
+}

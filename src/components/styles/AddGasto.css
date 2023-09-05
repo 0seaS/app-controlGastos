@@ -1,0 +1,28 @@
+.gasto__container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.gasto__container span:first-child{
+    flex-grow: 6;
+}
+
+.gasto__container span:nth-child(2){
+    flex-grow: 1;
+}
+
+.gasto__container span:nth-child(3){
+    flex-grow: 1;
+}
+
+.btn-addGasto{
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px black;
+}
+
+.btn-addGasto:hover{
+    scale: 1.1;
+}
+

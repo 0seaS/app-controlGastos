@@ -4,16 +4,22 @@ import DataTable from './components/DataTable'
 import AddRegister from './components/AddRegister'
 
 import './App.css'
+import { useState } from 'react'
 
 function App() {
 
-  
+  const [pagSelected, setPagSelected] = useState("datos")
 
   return (
     <>
-      <Header/>
-      <AddRegister/>
-      <DataTable/>
+      <Header
+      setPagSelected={setPagSelected}
+      />
+      {
+        pagSelected == "datos"
+        ?<DataTable/>
+        :<AddRegister/>
+      }
     </>
   )
 }
