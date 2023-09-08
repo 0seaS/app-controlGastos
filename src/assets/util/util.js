@@ -1,11 +1,14 @@
 
 
 const util = (arr) => {
-    let obj={}
-    for(let i = 0; i < arr.length/2; i+2){
-        obj[arr[i]] = arr[i+1]
+    let res=[]
+    for(let i = 0; i < arr.length; i=i+2){
+        let obj={}
+        obj.razon = arr[i]
+        obj.precio = +arr[i+1]
+        res.push(obj)
     }
-    return obj
+    return res
 }
 
 export default util

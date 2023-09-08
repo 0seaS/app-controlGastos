@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import useFetch from "../Hooks/useFetch.js"
 import DataCard from "./DataCard.jsx"
+import "./styles/DataTable.css"
 
 const DataTable = () => {
 
@@ -55,8 +56,9 @@ const DataTable = () => {
     }
 
   return (
-    <article>
-        <button onClick={handleSacaba}>Sacaba</button><button onClick={handleVilla}>Villa Tunari</button><button onClick={handleChimore}>Chimore</button>
+    <article className="data__container">
+        <div className="btn__select-container"><button className="btn__select" onClick={handleSacaba}>Sacaba</button><button className="btn__select" onClick={handleVilla}>Villa Tunari</button><button className="btn__select" onClick={handleChimore}>Chimore</button></div>
+        
         <header>
             <h2>Lista de Gastos {selectSucursal}</h2>
         </header>

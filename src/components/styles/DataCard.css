@@ -1,0 +1,16 @@
+.general__data{
+    max-width: 70%;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gastos__card{
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.gastos__card-title{
+    margin: 0;
+}

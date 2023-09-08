@@ -2,7 +2,9 @@
 
 const BodyCard = ({data}) => {
   return (
-    <span>{data}</span>
+    <div>
+      <span>{data.razon}</span><span>{data.precio}</span>
+    </div>
   )
 }
 

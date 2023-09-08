@@ -1,0 +1,24 @@
+.data__container{
+    max-width: 70%;
+    margin: 2em auto;
+    text-align: left;
+}
+
+.btn__select-container{
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn__select{
+    height: 2em;
+    border: none;
+    box-shadow: 1px 1px 3px white;
+    background-color: rgba(255, 227, 66, 0.849);
+    color: black;
+
+}
+
+.btn__select:hover{
+    scale: 1.1;
+}

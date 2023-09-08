@@ -6,6 +6,7 @@ import "./styles/AddRegister.css"
 const AddRegister = () => {
 
     const [gastosList, setGastosList] = useState([])
+    const [totalGastos, setTotalGastos] = useState(0)
     const {createRegister, startDB} = useFetch()
 
     useEffect(()=>{
@@ -18,6 +19,8 @@ const AddRegister = () => {
             razon: document.querySelector("#reason").value,
             monto: document.querySelector("#amountOutcome").value
         }
+
+        setTotalGastos(totalGastos + Number(document.querySelector("#amountOutcome").value))
 
         setGastosList([...gastosList, gasto])
 
@@ -50,6 +53,7 @@ const AddRegister = () => {
 
         //Reset de datos
         document.querySelector("#caja").value = ''
+        setTotalGastos(0)
 
         setGastosList([])
     }
@@ -92,6 +96,7 @@ const AddRegister = () => {
                     ))
                     : <span>Sin gastos </span>
                 }
+                <div><span>Total gastos: </span><span>{totalGastos}</span></div>
             </div>
 
             <form className="register__form" onClick={e => e.stopPropagation()} onSubmit={handleRegistrar}>
