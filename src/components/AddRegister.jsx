@@ -76,8 +76,8 @@ const AddRegister = () => {
 
             <div className="gastos__form">
                 <h3 className="gastos__form-title">Añadir Gastos</h3>
-                <label htmlFor="reason">Razon </label>
-                <input type="text" id="reason" placeholder="Ingrese la Razon" required></input>
+                <label htmlFor="reason">Descripcion </label>
+                <input type="text" id="reason" placeholder="Descripcion del Gasto" required></input>
                 <label htmlFor="amountOutcome">Monto </label>
                 <input type="number" id="amountOutcome" placeholder="Monto en Bs" min="0" step=".01" required></input>
                 <button className="btn-agregarGasto" onClick={handleAgregarGastos}>Agregar Gasto</button>

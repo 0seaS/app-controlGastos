@@ -1,14 +1,33 @@
+.gastos__card-container{
+    max-width: 90%;
+    margin: 0 2em auto;
+    padding: 1.5em;
+    box-shadow: 1px 1px 3px white;
+}
+
 .general__data{
-    max-width: 70%;
+    
     margin: 0 auto;
     text-align: left;
     display: flex;
     justify-content: space-between;
 }
 
+.general__data-element{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+}
+
 .gastos__card{
-    max-width: 60%;
+    max-width: 70%;
     margin: 0 auto;
+
+}
+
+.switchShow{
+    visibility: hidden;
+    display: none;
 }
 
 .gastos__card-title{

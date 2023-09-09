@@ -5,7 +5,7 @@ import "./styles/DataTable.css"
 
 const DataTable = () => {
 
-    const {dataApi, getData, startDB, actualizarData} = useFetch()
+    const {dataApi, getData, startDB} = useFetch()
     const [selectSucursal, setSelectSucursal] = useState("Todos")
     const [showData, setShowData] = useState()
 
@@ -14,32 +14,24 @@ const DataTable = () => {
         getData()
     }, [])
 
-    console.log(showData)
-
     useEffect(() => {
         let show
 
-            if (selectSucursal === "Villa") {
-                console.log(dataApi)
-                show = dataApi.filter(data => data.sucursal == "villa")
-                console.log(show)
-                setShowData(show)
-            }
-            else if(selectSucursal === "Chimore") {
-                console.log(dataApi)
-                show = dataApi.filter(data => data.sucursal == "chimore")
-                console.log(show)
-                setShowData(show)
-            }
-            else if(selectSucursal === "Sacaba") {
-                console.log(dataApi)
-                show = dataApi.filter(data => data.sucursal == "sacaba")
-                console.log(show)
-                setShowData(show)
-            }
-            else{
-                setShowData(dataApi)
-            }
+        if (selectSucursal === "Villa") {
+            show = dataApi.filter(data => data.sucursal == "villa").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
+            setShowData(show)
+        }
+        else if(selectSucursal === "Chimore") {
+            show = dataApi.filter(data => data.sucursal == "chimore").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
+            setShowData(show)
+        }
+        else if(selectSucursal === "Sacaba") {
+            show = dataApi.filter(data => data.sucursal == "sacaba").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
+            setShowData(show)
+        }
+        else{
+            setShowData(dataApi?.sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()))
+        }
         
 
         
@@ -60,7 +52,7 @@ const DataTable = () => {
         <div className="btn__select-container"><button className="btn__select" onClick={handleSacaba}>Sacaba</button><button className="btn__select" onClick={handleVilla}>Villa Tunari</button><button className="btn__select" onClick={handleChimore}>Chimore</button></div>
         
         <header>
-            <h2>Lista de Gastos {selectSucursal}</h2>
+            <h2>Cuentas de {selectSucursal}</h2>
         </header>
         <section>
             <div>
