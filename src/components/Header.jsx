@@ -1,16 +1,12 @@
 import "./styles/Header.css"
 const Header = ({setPagSelected}) => {
 
-  function handleDatos(){
-    setPagSelected("datos")
+  function handleCajas(){
+    setPagSelected("cajas")
   }
 
-  function handleCerrarCaja(){
-    setPagSelected("caja")
-  }
-
-  function handleCuentas(){
-    setPagSelected("cuentas")
+  function handleMercaderia(){
+    setPagSelected("Mercaderia")
   }
 
   return (
@@ -20,9 +16,8 @@ const Header = ({setPagSelected}) => {
       </div>
       <nav >
         <ul>
-            <li onClick={handleDatos}>Datos</li>
-            <li onClick={handleCerrarCaja}>Cerrar Caja</li>
-            <li onClick={handleCuentas}>Cuentas</li>
+            <li onClick={handleCajas}>Cajas</li>
+            <li onClick={handleMercaderia}>Mercaderia</li>
         </ul>
       </nav>
         

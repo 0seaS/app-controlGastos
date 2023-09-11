@@ -2,8 +2,11 @@ import BodyCard from "./BodyCard"
 import util from "../assets/util/util.js"
 import "./styles/DataCard.css"
 import { useState } from "react"
+import useFetch from "../Hooks/useFetch"
 
-const DataCard = ({bodyData}) => {
+const DataCard = ({bodyData, setEditar}) => {
+
+    const {deleteData} = useFetch()
 
     const [showGasto, setShowGasto] = useState(true)
 
@@ -13,6 +16,20 @@ const DataCard = ({bodyData}) => {
 
     function handleShowGasto(){
         setShowGasto(!showGasto)
+    }
+
+    function handleDelete(id, e){
+        e.stopPropagation()
+        let deleteRegister = confirm("Esta seguro de ELIMINAR el usuario?")
+        if (deleteRegister) {
+            deleteData(id)
+        }
+    }
+
+    function handleEdit(id, e){
+        e.stopPropagation()
+        console.log(id)
+        setEditar(bodyData)
     }
 
   return (
@@ -38,6 +55,8 @@ const DataCard = ({bodyData}) => {
                 </div>
                 <hr />
                 <div><span>Total gastos: </span><span>{totalGastos} Bs</span></div>
+                <div><button className="btn__delete" onClick={(e) => handleDelete(bodyData?.id, e)}>Eliminar</button></div>
+                <div><button className="btn__edit" onClick={(e) => handleEdit(bodyData?.id, e)}>Editar</button></div>
             </div>
         </div>
     </>

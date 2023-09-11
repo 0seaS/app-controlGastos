@@ -1,14 +1,13 @@
 
 import Header from './components/Header'
-import DataTable from './components/DataTable'
-import AddRegister from './components/AddRegister'
-
+import Tiendas from './components/Tiendas'
 import './App.css'
 import { useState } from 'react'
+import Mercaderia from './components/Mercaderia'
 
 function App() {
 
-  const [pagSelected, setPagSelected] = useState("datos")
+  const [pagSelected, setPagSelected] = useState("cajas")
 
   return (
     <>
@@ -16,9 +15,9 @@ function App() {
       setPagSelected={setPagSelected}
       />
       {
-        pagSelected == "datos"
-        ?<DataTable/>
-        :<AddRegister/>
+        pagSelected == "cajas"
+        ?<Tiendas/>
+        :<Mercaderia/>
       }
     </>
   )

@@ -13,7 +13,7 @@ const useFetch = () => {
   /*** START DB ***/
 
   function startDB(){
-    let solicitud = indexedDB.open("control-tienda");
+    let solicitud = indexedDB.open("control-tienda", 2);
 
     solicitud.addEventListener("error", showError);
     solicitud.addEventListener("success", start);
@@ -21,6 +21,7 @@ const useFetch = () => {
   }
   function showError(e){
     alert("Tenemos un error: " + e.code + " / " + e.message);
+    console.log(e)
   }
 
   function start(e){
@@ -29,9 +30,22 @@ const useFetch = () => {
   }
 
   function createDB(e){
-    let dataBase = e.target.result;
-    let tabla1 = dataBase.createObjectStore("caja", {keyPath: "id"});
-    startDB()
+    let dataBase = e.target.result
+    if (!dataBase.objectStoreNames.contains("caja")) {
+      let tabla1 = dataBase.createObjectStore("caja", {
+          keyPath: "id"
+      });
+      //aca van los insert
+    }
+    if (!dataBase.objectStoreNames.contains("compras")) {
+      let tabla2 = dataBase.createObjectStore("compras", {
+          keyPath: "id"
+      });
+    }
+
+    // let dataBase = e.target.result;
+    // let tabla1 = dataBase.createObjectStore("caja", {keyPath: "id"});
+    // startDB()
   }
 
   /*** GET ***/
@@ -68,17 +82,81 @@ const useFetch = () => {
 
   // CREATE
 
-  function createRegister(data1){
-    
-    let transaccion1 = db.transaction(["caja"], "readwrite");
-    let almacen1 = transaccion1.objectStore("caja");
-    almacen1.add(data1);
+  function createRegister(data){
+    let transaction = db.transaction("caja", "readwrite");
+    transaction.oncomplete = ev => {
+        //una ves la transaccion termino
+    };
+    transaction.onerror = err => console.log(err)
+    let store = transaction.objectStore('caja');
+    let request = store.add(data);
 
+    request.onsuccess = ev => {
+        alert("Registro insertado con exito");
+    };
+    request.onerror = err => {
+      console.log(err);
+      alert("Error!! No se inserto el registro")
+    };
+
+    // let transaccion1 = db.transaction(["caja"], "readwrite");
+    // let almacen1 = transaccion1.objectStore("caja");
+    // almacen1.add(data1);
+  }
+
+  /*** UPDATE ***/
+
+  function edidtRegister(data){
+    let transaction = db.transaction("caja", "readwrite");
+    transaction.oncomplete = ev => {
+        //una ves la transaccion termino
+    };
+    transaction.onerror = err => console.log(err)
+    let store = transaction.objectStore('caja');
+    let request = store.put(data);
+
+    request.onsuccess = ev => {
+        alert("Registro actualizado con exito");
+    };
+    request.onerror = err => {
+      console.log(err);
+      alert("Error!! No se actualizo el registro")
+    };
+
+    // let transaccion1 = db.transaction(["caja"], "readwrite");
+    // let almacen1 = transaccion1.objectStore("caja");
+    // almacen1.add(data1);
+  }
+
+  /*** DELETE ***/
+
+  function deleteData(key){
+    
+    var request = indexedDB.open("control-tienda");
+    request.onsuccess = function(e) {
+      let auxDB =  e.target.result;
+      let transaction = auxDB.transaction("caja", "readwrite");
+      transaction.oncomplete = e => {
+          // ACTUALIZAR DATOS
+          getData()
+      };
+      transaction.onerror = err => console.log(err)
+      let store = transaction.objectStore('caja');
+      let request = store.delete(key);
+
+      request.onsuccess = ev => {
+          alert("Registro Eliminado con exito");
+      };
+      request.onerror = err => {
+        console.log(err);
+        alert("Error!! No se Elimino el registro")
+      };
+    }
   }
 
   /*** EXPORT ***/
 
-  return {dataApi, getData, createRegister, startDB}
+  return {dataApi, getData, createRegister, startDB, deleteData, edidtRegister}
   
 }
 

@@ -8,7 +8,7 @@ const AddGasto = ({gasto, setGastosList, gastosList}) => {
 
   return (
     <div className="gasto__container">
-        <span>{gasto.razon} </span><span>{gasto.monto} Bs.</span><span><button className="btn-addGasto" onClick={handleQuitarGasto}>X</button></span>
+        <span>{gasto.razon} </span><span>{gasto.precio} Bs.</span><span><button className="btn-addGasto" onClick={handleQuitarGasto}>X</button></span>
     </div> 
   )
 }

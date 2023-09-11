@@ -3,7 +3,7 @@ import useFetch from "../Hooks/useFetch.js"
 import DataCard from "./DataCard.jsx"
 import "./styles/DataTable.css"
 
-const DataTable = () => {
+const DataTable = ({setEditar}) => {
 
     const {dataApi, getData, startDB} = useFetch()
     const [selectSucursal, setSelectSucursal] = useState("Todos")
@@ -61,6 +61,7 @@ const DataTable = () => {
                         <DataCard
                             key={register.id}
                             bodyData={register}
+                            setEditar={setEditar}
                         />
                     ))
                 }
