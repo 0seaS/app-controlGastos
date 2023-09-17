@@ -17,22 +17,24 @@ const AddRegister = ({editar, setEditar}) => {
             editarDato()
         }
     },[editar])
+
+    useEffect(() => {
+        //setTotalGastos(gastosList + Number(document.querySelector("#amountOutcome").value))
+        setTotalGastos(gastosList.reduce((ant,act) => ant + act.precio, 0))
+    }, [gastosList])
     
     function handleAgregarGastos(e){
         e.preventDefault()
 
         const gasto = {
             razon: document.querySelector("#reason").value,
-            precio: document.querySelector("#amountOutcome").value
+            precio: Number(document.querySelector("#amountOutcome").value)
         }
-
-        setTotalGastos(totalGastos + Number(document.querySelector("#amountOutcome").value))
 
         setGastosList([...gastosList, gasto])
 
         document.querySelector("#reason").value = ""
         document.querySelector("#amountOutcome").value = ""
-
     }
 
     function handleSubmitForm(e){
@@ -43,7 +45,7 @@ const AddRegister = ({editar, setEditar}) => {
 
             const registro = {
                 sucursal: suc.options[suc.selectedIndex].value,
-                caja: document.querySelector("#caja").value,
+                caja: Number(document.querySelector("#caja").value),
                 fecha: document.querySelector("#date").value,
                 gastos: aux,
                 /*gastos: gastosList,*/
@@ -157,7 +159,8 @@ const AddRegister = ({editar, setEditar}) => {
                     ))
                     : <span>Sin gastos </span>
                 }
-                <div><span>Total gastos: </span><span>{totalGastos}</span></div>
+                <hr />
+                <div className="gasto__total"><span>Total gastos: </span><span>{totalGastos} Bs.</span></div>
             </div>
 
             <form className="register__form" onClick={e => e.stopPropagation()} onSubmit={handleSubmitForm}>

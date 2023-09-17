@@ -11,7 +11,7 @@ const DataCard = ({bodyData, setEditar}) => {
     const [showGasto, setShowGasto] = useState(true)
 
     const {sumDat} = util()
-    let totalGastos =  sumDat(bodyData?.gastos)
+    let totalGastos =  bodyData?.gastos <1 ? sumDat(bodyData?.gastos) : 0
     let aux = bodyData?.gastos
 
     function handleShowGasto(){
@@ -45,12 +45,15 @@ const DataCard = ({bodyData, setEditar}) => {
                 <h4 className="gastos__card-title">Gastos</h4>
                 <div>
                     {
-                        aux.map((register, ind) => (
+                        aux.length<1
+                        ? aux.map((register, ind) => (
                             <BodyCard
                                 key={ind}
                                 data={register}
                             />
                         ))
+                        
+                        :<span>sin gastos</span>
                     }
                 </div>
                 <hr />
