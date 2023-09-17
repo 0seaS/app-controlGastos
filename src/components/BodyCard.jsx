@@ -1,9 +1,9 @@
-
+import "./styles/BodyCard.css"
 
 const BodyCard = ({data}) => {
   return (
-    <div>
-      <span>{data.razon}</span><span>{data.precio}</span>
+    <div className="bodycard__gastos">
+      <span>{data.razon}</span><span>{data.precio} Bs.</span>
     </div>
   )
 }

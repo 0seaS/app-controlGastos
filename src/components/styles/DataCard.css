@@ -1,7 +1,7 @@
 .gastos__card-container{
     max-width: 90%;
-    margin: 0 2em auto;
-    padding: 1.5em;
+    margin: 0 auto;
+    padding: 1em;
     box-shadow: 1px 1px 3px white;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .gastos__card{
-    max-width: 70%;
+    max-width: 85%;
     margin: 0 auto;
 
 }
@@ -32,4 +32,33 @@
 
 .gastos__card-title{
     margin: 0;
+}
+
+.totales{
+    text-align: right;
+    margin-bottom: 2em;
+}
+
+.btn__container{
+    text-align: center;
+}
+
+.btn{
+    margin-top: 1em;
+    height: 2em;
+    width: 50%;
+    box-shadow: 1px 1px 5px white;
+    border: none;
+    transition: scale .5s ease;
+}
+.btn:hover{
+    scale: 1.1;
+}
+
+.btn__delete{
+    background-color: rgb(240, 49, 49);
+}
+
+.btn__edit{
+    background-color: rgb(5, 151, 5);
 }

@@ -140,7 +140,7 @@ const AddRegister = ({editar, setEditar}) => {
                 <label htmlFor="reason">Descripcion </label>
                 <input type="text" id="reason" placeholder="Descripcion del Gasto" required></input>
                 <label htmlFor="amountOutcome">Monto </label>
-                <input type="number" id="amountOutcome" placeholder="Monto en Bs" min="0" step=".01" required></input>
+                <input type="number" id="amountOutcome" placeholder="Monto en Bs" step=".01" required></input>
                 <button className="btn-agregarGasto" type="submit">Agregar Gasto</button>
             </form>
             <h3 className="gastos__title">Gastos del dia</h3>

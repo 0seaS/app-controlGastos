@@ -1,0 +1,4 @@
+.bodycard__gastos{
+    display: flex;
+    justify-content: space-between;
+}

@@ -10,6 +10,14 @@
     justify-content: space-between;
 }
 
+.gastos__card-container-title{
+    max-width: 85%;
+    margin: 0 auto;
+    padding: 1em;
+    text-align: center;
+    color: red;
+}
+
 .btn__select{
     height: 2em;
     border: none;

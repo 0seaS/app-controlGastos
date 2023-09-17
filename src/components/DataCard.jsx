@@ -36,9 +36,9 @@ const DataCard = ({bodyData, setEditar}) => {
     <>
         <div className="gastos__card-container" onClick={handleShowGasto}>
             <div className="general__data">
-                <div className="general__data-element"><span>Fecha: </span>{bodyData?.fecha}<span></span></div>
-                <div className="general__data-element"><span>Sucursal: </span>{bodyData?.sucursal}<span></span></div>
-                <div className="general__data-element"><span>Caja: </span>{bodyData?.caja} Bs.<span></span></div>
+                <div className="general__data-element"><span>{bodyData?.fecha}</span></div>
+                <div className="general__data-element"><span>{bodyData?.sucursal}</span></div>
+                <div className="general__data-element"><span>{bodyData?.caja} Bs.</span></div>
             </div>
             <div className={`gastos__card ${showGasto ? 'switchShow': ''}`}>
                 <h5><span>Total Ventas del dia: </span><span>{Number(bodyData?.caja) + totalGastos} Bs</span></h5>
@@ -54,9 +54,9 @@ const DataCard = ({bodyData, setEditar}) => {
                     }
                 </div>
                 <hr />
-                <div><span>Total gastos: </span><span>{totalGastos} Bs</span></div>
-                <div><button className="btn__delete" onClick={(e) => handleDelete(bodyData?.id, e)}>Eliminar</button></div>
-                <div><button className="btn__edit" onClick={(e) => handleEdit(bodyData?.id, e)}>Editar</button></div>
+                <div className="totales"><span>Total gastos: </span><span>{totalGastos} Bs</span></div>
+                <div className="btn__container"><button className="btn btn__delete" onClick={(e) => handleDelete(bodyData?.id, e)}>Eliminar</button></div>
+                <div className="btn__container"><button className="btn btn__edit" onClick={(e) => handleEdit(bodyData?.id, e)}>Editar</button></div>
             </div>
         </div>
     </>

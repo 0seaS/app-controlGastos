@@ -56,6 +56,14 @@ const DataTable = ({setEditar}) => {
         </header>
         <section>
             <div>
+                <div className="gastos__card-container-title">
+                    <div className="general__data">
+                        <div className="general__data-element"><span>Fecha: </span></div>
+                        <div className="general__data-element"><span>Sucursal: </span></div>
+                        <div className="general__data-element"><span>Caja: </span></div>
+                    </div>
+                </div>
+                
                 {
                     showData?.map(register => (
                         <DataCard

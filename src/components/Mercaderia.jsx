@@ -21,7 +21,7 @@ const Mercaderia = () => {
           <nav >
             <ul>
                 <li onClick={handleDatos}>Datos</li>
-                <li onClick={handleAgregarMerc}>Distribucion</li>
+                <li onClick={handleAgregarMerc}>Ingresar Datos</li>
             </ul>
           </nav>
         </header>
