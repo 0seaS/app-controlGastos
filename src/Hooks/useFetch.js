@@ -66,9 +66,14 @@ const useFetch = () => {
         /*** Esta parte cambia los gastos por un arreglo de objetos ***/
         let dataTrasform = dataApiBD.result
         dataTrasform.forEach(element => {
-          let arrAux = element.gastos.split(',')
-          let aux = toObj(arrAux)
-          element.gastos = aux
+          if (element.gastos === "") {
+            element.gastos = []
+          } else {
+            let arrAux = element.gastos.split(',')
+            let aux = toObj(arrAux)
+            element.gastos = aux
+          }
+          
         });
         /*** aqui termina el cambio ***/
         

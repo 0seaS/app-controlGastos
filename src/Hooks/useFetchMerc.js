@@ -1,6 +1,10 @@
-
+import { useState } from "react"
+import util from "../assets/util/util"
 
 const useFetchMerc = () => {
+
+    const {toObj2, toObj3} = util()
+    const [data, setData] = useState()
 
     function createRegisterMerc(data){
         data.id = generateUUID()
@@ -26,6 +30,37 @@ const useFetchMerc = () => {
             };
         }
     }
+
+    function getData(){
+        var request = indexedDB.open("control-tienda");
+        request.onsuccess = function(e) {
+            let auxDB =  e.target.result;
+            let transaccion = auxDB.transaction(["compras"]);
+            transaccion.oncomplete = (ev) => {
+        
+            }
+            let almacen = transaccion.objectStore("compras");
+            let getReq = almacen.getAll()
+            getReq.onsuccess = (ev) => {
+                let dataApiBD = ev.target
+                /*** Esta parte cambia los gastos por un arreglo de objetos ***/
+                let dataTrasform = dataApiBD.result
+                dataTrasform.forEach(element => {
+                let auxPagos = toObj2(element.pagos.split(','))
+                let auxProductos = toObj3(element.productos.split(','))
+                element.pagos = auxPagos
+                element.productos = auxProductos
+                });
+                /*** aqui termina el cambio ***/
+                
+                setData(dataTrasform)
+                console.log(dataTrasform)
+            }
+            getReq.onerror = (err) => {
+                console.log(err)
+            }
+        }
+      }
 
     function deleteData(key){
     
@@ -61,7 +96,7 @@ const useFetchMerc = () => {
         return uuid;
     }
 
-  return {createRegisterMerc}
+  return {data, createRegisterMerc, getData}
 
 }
 

@@ -1,10 +1,9 @@
 
 
-const AddMercProducto = ({product, setProductList, productList, precioTotal, setPrecioTotal}) => {
+const AddMercProducto = ({product, setProductList, productList}) => {
 
     function handleQuitarProducto(){
         setProductList(productList.filter(element => element.descripcion != product.descripcion)) 
-        setPrecioTotal(precioTotal-product.precio)
     }
 
   return (
