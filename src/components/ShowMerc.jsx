@@ -78,9 +78,9 @@ const ShowMerc = ({setEditar}) => {
             </div>
             <span></span>
         </section>
-        <div className="total__cajas">Pagado: {totalPagado.toFixed(2)} Bs.</div>
-        <div className="total__cajas">saldo: {(totalMercaderia - totalPagado).toFixed(2)} Bs.</div>
-        <div className="total__cajas">Total Mercaderia: {totalMercaderia.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Pagado: {totalPagado?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">saldo: {(totalMercaderia - totalPagado)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Total Mercaderia: {totalMercaderia?.toFixed(2)} Bs.</div>
     </article>
   )
 }
