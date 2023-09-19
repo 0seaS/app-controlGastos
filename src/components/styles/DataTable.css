@@ -30,3 +30,11 @@
 .btn__select:hover{
     scale: 1.1;
 }
+
+.total__cajas{
+    text-align: right;
+    margin-right: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    font-size: 1.5em;
+}

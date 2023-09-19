@@ -17,6 +17,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.3em;
+    text-align: left;
 }
 
 .gastos__card{

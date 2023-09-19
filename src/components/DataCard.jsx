@@ -37,7 +37,7 @@ const DataCard = ({bodyData, setEditar}) => {
         <div className="gastos__card-container" onClick={handleShowGasto}>
             <div className="general__data">
                 <div className="general__data-element"><span>{bodyData?.fecha}</span></div>
-                <div className="general__data-element"><span>{bodyData?.sucursal}</span></div>
+                <div className="general__data-element"><span>{Number(bodyData?.caja) + totalGastos} Bs.</span></div>
                 <div className="general__data-element"><span>{bodyData?.caja} Bs.</span></div>
             </div>
             <div className={`gastos__card ${showGasto ? 'switchShow': ''}`}>

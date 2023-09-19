@@ -8,6 +8,8 @@ const DataTable = ({setEditar}) => {
     const {dataApi, getData, startDB} = useFetch()
     const [selectSucursal, setSelectSucursal] = useState("Todos")
     const [showData, setShowData] = useState()
+    const [totalCajas, setTotalCajas] = useState(0)
+    const [totalGastos, setTotalGastos] = useState(0)
 
     useEffect(() => {
         startDB()
@@ -32,10 +34,14 @@ const DataTable = ({setEditar}) => {
         else{
             setShowData(dataApi?.sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()))
         }
-        
-
-        
     }, [dataApi, selectSucursal])
+
+    useEffect(() => {
+        setTotalCajas(showData?.reduce((acc, cur) => acc + Number(cur.caja), 0))
+        setTotalGastos(showData?.reduce((acc, cur) => acc + cur.gastos.reduce((acc, cur) => acc + cur.precio, 0), 0))
+    }, [showData])
+
+
 
     function handleSacaba(){
         setSelectSucursal("Sacaba")
@@ -59,7 +65,7 @@ const DataTable = ({setEditar}) => {
                 <div className="gastos__card-container-title">
                     <div className="general__data">
                         <div className="general__data-element"><span>Fecha: </span></div>
-                        <div className="general__data-element"><span>Sucursal: </span></div>
+                        <div className="general__data-element"><span>Ventas: </span></div>
                         <div className="general__data-element"><span>Caja: </span></div>
                     </div>
                 </div>
@@ -73,8 +79,9 @@ const DataTable = ({setEditar}) => {
                         />
                     ))
                 }
+                <div className="total__cajas">Total Gastos: {totalGastos}</div>
+                <div className="total__cajas">Total en Caja: {totalCajas}</div>
             </div>
-            <span></span>
         </section>
     </article>
   )

@@ -10,11 +10,12 @@
 
 .gasto__container span:nth-child(2){
     flex-grow: 1;
-    text-align: right;
+    text-align: left;
 }
 
 .gasto__container span:nth-child(3){
     flex-grow: 1;
+    text-align: right;
 }
 
 .btn-addGasto{
