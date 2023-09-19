@@ -4,14 +4,14 @@ import AddMercPagos from "./AddMercPagos"
 import useFetchMerc from "../Hooks/useFetchMerc"
 
 
-const AddMerc = () => {
+const AddMerc = ({editar, setEditar}) => {
 
     const [productList, setProductList] = useState([])
     const [pagosList, setPagosList] = useState([])
     const [precioTotal, setPrecioTotal] = useState(0)
     const [pagadoTotal, setPagadoTotal] = useState(0)
 
-    const {createRegisterMerc} = useFetchMerc()
+    const {createRegisterMerc, edidtRegister} = useFetchMerc()
 
     function handleAgregarProducto(e){
         e.preventDefault()
@@ -48,12 +48,51 @@ const AddMerc = () => {
         setPagadoTotal(pagosList.reduce((ant,act) => ant + act.monto, 0))
     }, [pagosList])
     useEffect(() => {
-        setPrecioTotal(productList.reduce((ant,act) => ant + act.precio, 0))
+        setPrecioTotal(productList.reduce((ant,act) => ant + Number((act.precio*act.cantidad).toFixed(2)), 0))
     }, [productList])
+    useEffect(()=>{
+        if (editar) {
+            editarDato()
+        }
+    },[editar])
+
+    function editarDato(){
+        console.log(editar)
+        document.getElementById("branch").value = editar.sucursal;
+        document.getElementById("typeReceipt").value = editar.tipo;
+        document.getElementById("dateReceipt").value = editar.fecha;
+        document.getElementById("dispatchPlace").value = editar.lugarDespacho
+        setPagosList(editar.pagos)
+        setProductList(editar.productos)
+    }
 
     function handleSubmitForm(e){
         e.preventDefault()
-        register()
+        if (editar) {
+            let suc = document.getElementById("branch");
+            let typ = document.getElementById("typeReceipt");
+
+            const registro = {
+                sucursal: suc.options[suc.selectedIndex].value,
+                tipo: typ.options[typ.selectedIndex].value,
+                fecha: document.getElementById("dateReceipt").value,
+                lugarDespacho: document.getElementById("dispatchPlace").value,
+                productos: productList,
+                pagos:pagosList,
+                id : editar.id
+            }
+
+            // EDITAR
+
+            edidtRegister(registro)
+            console.log(registro)
+
+            clearDatos()
+            setEditar(undefined)
+            console.log(editar)
+        } else{
+            register()
+        }
     }
 
     function register(){
@@ -93,7 +132,7 @@ const AddMerc = () => {
             <label htmlFor="description">Descripcion </label>
             <input type="text" id="description" placeholder="Descripcion" required></input>
             <label htmlFor="quantity">Cantidad </label>
-            <input type="text" id="quantity" placeholder="Cantidad del producto" required></input>
+            <input type="number" id="quantity" placeholder="Cantidad del producto" step=".01" required></input>
             <label htmlFor="purchasePrice">Precio de Compra</label>
             <input type="number" id="purchasePrice" placeholder="Precio en Bs" step=".01" required></input>
             <button className="btn-agregarGasto" type="submit">Agregar</button>
@@ -115,7 +154,7 @@ const AddMerc = () => {
                 : <span>Sin Productos </span>
             }
             <hr />
-            <div className="gasto__total"><span>Total Productos: </span><span>{precioTotal} Bs.</span></div>
+            <div className="gasto__total"><span>Total: </span><span>{precioTotal} Bs.</span></div>
         </div>
 
         <form className="gastos__form" onClick={e => e.stopPropagation()} onSubmit={handleAgregarPago}>
@@ -166,7 +205,13 @@ const AddMerc = () => {
             <label htmlFor="dispatchPlace">Lugar de Despacho </label>
             <input type="text" id="dispatchPlace" placeholder="Lugar de Despacho" required></input>
 
-            <button className="btn-submit" type="submit">Registrar</button>
+            <button className="btn-submit" type="submit">
+                {
+                editar
+                ? "Editar"
+                : "Registrar"
+                }
+            </button>
             </div>
         </form >
     </div>

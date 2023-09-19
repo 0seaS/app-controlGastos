@@ -79,8 +79,8 @@ const DataTable = ({setEditar}) => {
                         />
                     ))
                 }
-                <div className="total__cajas">Total Gastos: {totalGastos}</div>
-                <div className="total__cajas">Total en Caja: {totalCajas}</div>
+                <div className="total__cajas">Total Gastos: {totalGastos} Bs.</div>
+                <div className="total__cajas">Total en Caja: {totalCajas} Bs.</div>
             </div>
         </section>
     </article>

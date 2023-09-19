@@ -46,8 +46,9 @@ const useFetchMerc = () => {
                 /*** Esta parte cambia los gastos por un arreglo de objetos ***/
                 let dataTrasform = dataApiBD.result
                 dataTrasform.forEach(element => {
-                let auxPagos = toObj2(element.pagos.split(','))
-                let auxProductos = toObj3(element.productos.split(','))
+                    console.log(element.pagos)
+                let auxPagos = element.pagos == "" ? [] : toObj2(element.pagos.split(','))
+                let auxProductos = element.productos == "" ? [] : toObj3(element.productos.split(','))
                 element.pagos = auxPagos
                 element.productos = auxProductos
                 });
@@ -67,13 +68,11 @@ const useFetchMerc = () => {
         var request = indexedDB.open("control-tienda");
         request.onsuccess = function(e) {
             let auxDB =  e.target.result;
-            let transaction = auxDB.transaction("caja", "readwrite");
+            let transaction = auxDB.transaction("compras", "readwrite");
             transaction.oncomplete = e => {
-                // ACTUALIZAR DATOS
-                getData()
             };
             transaction.onerror = err => console.log(err)
-            let store = transaction.objectStore('caja');
+            let store = transaction.objectStore('compras');
             let request = store.delete(key);
         
             request.onsuccess = ev => {
@@ -86,6 +85,30 @@ const useFetchMerc = () => {
         }
     }
 
+    function edidtRegister(data){
+        data.productos = data.productos.map(data => Object.values(data)).toString()
+        data.pagos = data.pagos.map(data => Object.values(data)).toString()
+        var request = indexedDB.open("control-tienda");
+        request.onsuccess = function(e) {
+            let db =  e.target.result;
+
+            let transaction = db.transaction("compras", "readwrite");
+            transaction.oncomplete = ev => {
+            };
+            transaction.onerror = err => console.log(err)
+            let store = transaction.objectStore('compras');
+            let request = store.put(data);
+
+            request.onsuccess = ev => {
+                alert("Registro actualizado con exito");
+            };
+            request.onerror = err => {
+                console.log(err);
+                alert("Error!! No se actualizo el registro")
+            };
+        }
+      }
+
     function generateUUID() {
         var d = new Date().getTime();
         var uuid = 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -96,7 +119,7 @@ const useFetchMerc = () => {
         return uuid;
     }
 
-  return {data, createRegisterMerc, getData}
+  return {data, createRegisterMerc, getData, deleteData, edidtRegister}
 
 }
 

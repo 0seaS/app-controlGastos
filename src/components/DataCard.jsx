@@ -20,7 +20,7 @@ const DataCard = ({bodyData, setEditar}) => {
 
     function handleDelete(id, e){
         e.stopPropagation()
-        let deleteRegister = confirm("Esta seguro de ELIMINAR el usuario?")
+        let deleteRegister = confirm("Esta seguro de ELIMINAR el registro?")
         if (deleteRegister) {
             deleteData(id)
         }
@@ -28,7 +28,6 @@ const DataCard = ({bodyData, setEditar}) => {
 
     function handleEdit(id, e){
         e.stopPropagation()
-        console.log(id)
         setEditar(bodyData)
     }
 

@@ -1,4 +1,4 @@
-
+import "./styles/AddMercProduct.css"
 
 const AddMercProducto = ({product, setProductList, productList}) => {
 
@@ -7,9 +7,12 @@ const AddMercProducto = ({product, setProductList, productList}) => {
     }
 
   return (
-    <div className="gasto__container">
-        <span>{product.descripcion} </span><span>{product.cantidad} unidades.</span><span>{product.precio} Bs.</span><span><button className="btn-addGasto" onClick={handleQuitarProducto}>X</button></span>
+    <>
+    <div>{product.descripcion}</div>
+    <div className="product__container">
+        <span>{product.cantidad} U.</span><span>{product.precio} Bs.</span><span>{Number(product.cantidad*product.precio).toFixed(2)} </span><span><button className="btn-addGasto" onClick={handleQuitarProducto}>X</button></span>
     </div>
+    </>   
   )
 }
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AddMerc from "./AddMerc"
 import ShowMerc from "./ShowMerc"
 
@@ -6,6 +6,14 @@ import ShowMerc from "./ShowMerc"
 const Mercaderia = () => {
 
     const [pagSelected, setPagSelected] = useState("datos")
+    const [editar, setEditar] = useState()
+
+    useEffect(() => {
+      if (editar) {
+        setPagSelected("addMerc")
+      }
+    }, [editar])
+    
 
     function handleDatos(){
       setPagSelected("datos")
@@ -27,8 +35,13 @@ const Mercaderia = () => {
         </header>
         {
             pagSelected == "datos"
-            ?<ShowMerc/>
-            :<AddMerc/>
+            ?<ShowMerc
+            setEditar={setEditar}
+            />
+            :<AddMerc
+            editar={editar}
+            setEditar={setEditar}
+            />
         }
         </>
       )

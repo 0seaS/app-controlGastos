@@ -1,0 +1,9 @@
+.data__table-title{
+    display: flex;
+    justify-content: space-between;
+    color: red;
+}
+
+.totales__merc{
+    text-align: right;
+}
