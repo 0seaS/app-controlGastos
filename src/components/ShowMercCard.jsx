@@ -45,8 +45,8 @@ const ShowMercCard = ({data, setEditar}) => {
         </div>
         <div className="general__data">
             <div className="general__data-element"><span>{data?.lugarDespacho}</span></div>
-            <div className="general__data-element"><span>{totalCompra} Bs.</span></div>
-            <div className="general__data-element"><span>{totalCompra > totalPagado ? totalCompra - totalPagado + " Bs." : "Pagado"}</span></div>
+            <div className="general__data-element"><span>{totalCompra.toFixed(2)} Bs.</span></div>
+            <div className="general__data-element"><span>{totalCompra > totalPagado ? (totalCompra - totalPagado).toFixed(2) + " Bs." : "Pagado"}</span></div>
         </div>
         {
             showData
