@@ -9,6 +9,8 @@ const ShowMerc = ({setEditar}) => {
     const [showData, setShowData] = useState()
     const [totalMercaderia, setTotalMercaderia] = useState(0)
     const [totalPagado, setTotalPagado] = useState(0)
+    const [fromDateValue, setFromDateValue] = useState("2023-08-01")
+    const [toDateValue, setToDateValue] = useState(new Date().toISOString().slice(0, 10))
 
     useEffect(() => {
       getData()
@@ -26,20 +28,19 @@ const ShowMerc = ({setEditar}) => {
 
       if (selectSucursal === "Villa") {
           show = data.filter(data1 => data1.sucursal == "villa").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
-          setShowData(show)
       }
       else if(selectSucursal === "Chimore") {
           show = data.filter(data1 => data1.sucursal == "chimore").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
-          setShowData(show)
       }
       else if(selectSucursal === "Sacaba") {
           show = data.filter(data1 => data1.sucursal == "sacaba").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
-          setShowData(show)
       }
-      else{
-          setShowData(data?.filter(data1 => data1.sucursal == "externas").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime()))
+      else if(selectSucursal === "Externas"){
+          show = data?.filter(data1 => data1.sucursal == "externas").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
       }
-  }, [data, selectSucursal])
+      show = show?.filter(data => new Date(data.fecha).getTime() <= new Date(toDateValue).getTime() && new Date(data.fecha).getTime() >= new Date(fromDateValue).getTime())
+      setShowData(show)
+  }, [data, selectSucursal, toDateValue, fromDateValue])
 
     function handleSacaba(){
       setSelectSucursal("Sacaba")
@@ -57,10 +58,16 @@ const ShowMerc = ({setEditar}) => {
       setSelectSucursal("Externas")
     }
 
+    function setDatesValues(){
+      setToDateValue(document.getElementById("toDate").value)
+      setFromDateValue(document.getElementById("fromDate").value)
+    }
+
   return (
     <article className="data__container">
         <div className="btn__select-container"><button className="btn__select" onClick={handleSacaba}>Sacaba</button><button className="btn__select" onClick={handleVilla}>Villa Tunari</button><button className="btn__select" onClick={handleChimore}>Chimore</button><button className="btn__select" onClick={handleExternas}>Externas</button></div>
-        
+        <div className="filterDate"><span>Desde: </span><input type="date" id="fromDate" value={fromDateValue} onChange={setDatesValues}/> </div>
+        <div className="filterDate"><span>Hasta: </span><input type="date" id="toDate" value={toDateValue} onChange={setDatesValues}/></div>
         <header>
             <h2>Mercaderia de {selectSucursal}</h2>
         </header>
