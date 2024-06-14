@@ -154,7 +154,7 @@ const AddMerc = ({editar, setEditar}) => {
                 : <span>Sin Productos </span>
             }
             <hr />
-            <div className="gasto__total"><span>Total: </span><span>{precioTotal} Bs.</span></div>
+            <div className="gasto__total"><span>Total: </span><span>{precioTotal.toFixed(2)} Bs.</span></div>
         </div>
 
         <form className="gastos__form" onClick={e => e.stopPropagation()} onSubmit={handleAgregarPago}>

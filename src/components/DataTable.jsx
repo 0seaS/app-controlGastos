@@ -54,9 +54,6 @@ const DataTable = ({setEditar}) => {
         setFromDateValue(document.getElementById("fromDate").value)
     }
 
-    console.log(toDateValue)
-    console.log(fromDateValue)
-
   return (
     <article className="data__container">
         <div className="btn__select-container"><button className="btn__select" onClick={handleSacaba}>Sacaba</button><button className="btn__select" onClick={handleVilla}>Villa Tunari</button><button className="btn__select" onClick={handleChimore}>Chimore</button></div>

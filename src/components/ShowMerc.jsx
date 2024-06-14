@@ -11,6 +11,7 @@ const ShowMerc = ({setEditar}) => {
     const [totalPagado, setTotalPagado] = useState(0)
     const [fromDateValue, setFromDateValue] = useState("2023-08-01")
     const [toDateValue, setToDateValue] = useState(new Date().toISOString().slice(0, 10))
+    const [typeMerc, setTypeMerc] = useState("compra")
 
     useEffect(() => {
       getData()
@@ -38,9 +39,9 @@ const ShowMerc = ({setEditar}) => {
       else if(selectSucursal === "Externas"){
           show = data?.filter(data1 => data1.sucursal == "externas").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
       }
-      show = show?.filter(data => new Date(data.fecha).getTime() <= new Date(toDateValue).getTime() && new Date(data.fecha).getTime() >= new Date(fromDateValue).getTime())
+      show = show?.filter(data => new Date(data.fecha).getTime() <= new Date(toDateValue).getTime() && new Date(data.fecha).getTime() >= new Date(fromDateValue).getTime() && data.tipo == typeMerc)
       setShowData(show)
-  }, [data, selectSucursal, toDateValue, fromDateValue])
+  }, [data, selectSucursal, toDateValue, fromDateValue, typeMerc])
 
     function handleSacaba(){
       setSelectSucursal("Sacaba")
@@ -63,13 +64,22 @@ const ShowMerc = ({setEditar}) => {
       setFromDateValue(document.getElementById("fromDate").value)
     }
 
+    function handleSwitchType(){
+      if(typeMerc == "compra"){
+        setTypeMerc("venta")
+      }else{
+        setTypeMerc("compra")
+      }
+    }
+
   return (
     <article className="data__container">
         <div className="btn__select-container"><button className="btn__select" onClick={handleSacaba}>Sacaba</button><button className="btn__select" onClick={handleVilla}>Villa Tunari</button><button className="btn__select" onClick={handleChimore}>Chimore</button><button className="btn__select" onClick={handleExternas}>Externas</button></div>
         <div className="filterDate"><span>Desde: </span><input type="date" id="fromDate" value={fromDateValue} onChange={setDatesValues}/> </div>
         <div className="filterDate"><span>Hasta: </span><input type="date" id="toDate" value={toDateValue} onChange={setDatesValues}/></div>
+        <div><button className='btn__select' onClick={handleSwitchType}>{typeMerc == "compra" ? "Ventas" : "Compras"}</button></div>
         <header>
-            <h2>Mercaderia de {selectSucursal}</h2>
+            <h2>Mercaderia de {selectSucursal} {typeMerc}</h2>
         </header>
         <section>
             <div>
