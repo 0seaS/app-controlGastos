@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import useFetchMerc from '../Hooks/useFetchMerc'
 import ShowMercCard from './ShowMercCard'
+import "./styles/ShowMerc.css"
 
 const ShowMerc = ({setEditar}) => {
 
     const {data, getData} = useFetchMerc()
     const [selectSucursal, setSelectSucursal] = useState("Externas")
     const [showData, setShowData] = useState()
-    const [totalMercaderia, setTotalMercaderia] = useState(0)
-    const [totalPagado, setTotalPagado] = useState(0)
+    const [totalCompras, setTotalCompras] = useState(0)
+    const [totalVentas, setTotalVentas] = useState(0)
+    const [pagadoCompras, setPagadoCompras] = useState(0)
+    const [pagadoVentas, setPagadoVentas] = useState(0)
     const [fromDateValue, setFromDateValue] = useState("2023-08-01")
     const [toDateValue, setToDateValue] = useState(new Date().toISOString().slice(0, 10))
-    const [typeMerc, setTypeMerc] = useState("compra")
+    const [typeMerc, setTypeMerc] = useState("todos")
 
     useEffect(() => {
       getData()
@@ -19,8 +22,10 @@ const ShowMerc = ({setEditar}) => {
     }, [])
 
     useEffect(() => {
-      setTotalMercaderia(showData?.reduce((acc, cur) => acc + cur.productos.reduce((acc, cur) => acc + Number((cur.cantidad*cur.precio).toFixed(2)), 0), 0))
-      setTotalPagado(showData?.reduce((acc, cur) => acc + cur.pagos.reduce((acc, cur) => acc + Number(cur.monto), 0), 0))
+      setTotalCompras(showData?.filter(data => data.tipo == 'compra').reduce((acc, cur) => acc + cur.productos.reduce((acc, cur) => acc + Number((cur.cantidad*cur.precio).toFixed(2)), 0), 0))
+      setPagadoCompras(showData?.filter(data => data.tipo == 'compra').reduce((acc, cur) => acc + cur.pagos.reduce((acc, cur) => acc + Number(cur.monto), 0), 0))
+      setTotalVentas(showData?.filter(data => data.tipo == 'venta').reduce((acc, cur) => acc + cur.productos.reduce((acc, cur) => acc + Number((cur.cantidad*cur.precio).toFixed(2)), 0), 0))
+      setPagadoVentas(showData?.filter(data => data.tipo == 'venta').reduce((acc, cur) => acc + cur.pagos.reduce((acc, cur) => acc + Number(cur.monto), 0), 0))
   }, [showData])
 
     useEffect(() => {
@@ -39,7 +44,11 @@ const ShowMerc = ({setEditar}) => {
       else if(selectSucursal === "Externas"){
           show = data?.filter(data1 => data1.sucursal == "externas").sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime())
       }
-      show = show?.filter(data => new Date(data.fecha).getTime() <= new Date(toDateValue).getTime() && new Date(data.fecha).getTime() >= new Date(fromDateValue).getTime() && data.tipo == typeMerc)
+      if(typeMerc == "todos"){
+        show = show?.filter(data => new Date(data.fecha).getTime() <= new Date(toDateValue).getTime() && new Date(data.fecha).getTime() >= new Date(fromDateValue).getTime())
+      }else {
+        show = show?.filter(data => new Date(data.fecha).getTime() <= new Date(toDateValue).getTime() && new Date(data.fecha).getTime() >= new Date(fromDateValue).getTime() && data.tipo == typeMerc)
+      }
       setShowData(show)
   }, [data, selectSucursal, toDateValue, fromDateValue, typeMerc])
 
@@ -64,23 +73,25 @@ const ShowMerc = ({setEditar}) => {
       setFromDateValue(document.getElementById("fromDate").value)
     }
 
-    function handleSwitchType(){
-      if(typeMerc == "compra"){
-        setTypeMerc("venta")
-      }else{
-        setTypeMerc("compra")
-      }
+    function handleBtnTodos(){
+      setTypeMerc("todos")
+    }
+    function handleBtnCompras(){
+      setTypeMerc("compra")
+    }
+    function handleBtnVentas(){
+      setTypeMerc("venta")
     }
 
   return (
     <article className="data__container">
-        <div className="btn__select-container"><button className="btn__select" onClick={handleSacaba}>Sacaba</button><button className="btn__select" onClick={handleVilla}>Villa Tunari</button><button className="btn__select" onClick={handleChimore}>Chimore</button><button className="btn__select" onClick={handleExternas}>Externas</button></div>
+      <header className='title-container'>
+        <h2>EXTERNAS <i className='bx bxs-truck'></i></h2>
+      </header>
+        {/*<div className="btn__select-container"><button className="btn__select" onClick={handleSacaba}>Sacaba</button><button className="btn__select" onClick={handleVilla}>Villa Tunari</button><button className="btn__select" onClick={handleChimore}>Chimore</button><button className="btn__select" onClick={handleExternas}>Externas</button></div>*/}
         <div className="filterDate"><span>Desde: </span><input type="date" id="fromDate" value={fromDateValue} onChange={setDatesValues}/> </div>
         <div className="filterDate"><span>Hasta: </span><input type="date" id="toDate" value={toDateValue} onChange={setDatesValues}/></div>
-        <div><button className='btn__select' onClick={handleSwitchType}>{typeMerc == "compra" ? "Ventas" : "Compras"}</button></div>
-        <header>
-            <h2>Mercaderia de {selectSucursal} {typeMerc}</h2>
-        </header>
+        <div className='buttons-container'><button className='btn__select' onClick={handleBtnTodos}>Todos</button><button className='btn__select' onClick={handleBtnCompras}>Compras</button><button className='btn__select' onClick={handleBtnVentas}>Ventas</button></div>
         <section>
             <div>
                 {
@@ -95,9 +106,26 @@ const ShowMerc = ({setEditar}) => {
             </div>
             <span></span>
         </section>
-        <div className="total__cajas">Pagado: {totalPagado?.toFixed(2)} Bs.</div>
-        <div className="total__cajas">saldo: {(totalMercaderia - totalPagado)?.toFixed(2)} Bs.</div>
-        <div className="total__cajas">Total Mercaderia: {totalMercaderia?.toFixed(2)} Bs.</div>
+        {typeMerc == 'todos' ?
+        <>
+        <div className="total__cajas minus">Total Compras: {totalCompras?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Total Ventas: {totalVentas?.toFixed(2)} Bs.</div>
+        <div className="total__cajas plus big">Ganancia: {(totalVentas-totalCompras)?.toFixed(2)} Bs.</div>
+        </>
+         : 
+         typeMerc == 'venta' ?
+        <>
+        <div className="total__cajas">Pagado: {pagadoVentas?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Saldo: {(totalVentas - pagadoVentas)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Total Ventas: {totalVentas?.toFixed(2)} Bs.</div>
+        </>
+         :
+        <>
+        <div className="total__cajas">Pagado: {pagadoCompras?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Saldo: {(totalCompras - pagadoCompras)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Total Compras: {totalCompras?.toFixed(2)} Bs.</div>
+        </>
+         }
     </article>
   )
 }

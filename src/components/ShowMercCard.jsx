@@ -36,17 +36,17 @@ const ShowMercCard = ({data, setEditar}) => {
     
   return (
     <>
-    <div className="gastos__card-container" onClick={handleShowData}>
+    <div className={showData ? "gastos__card-container lite-shadow" : "gastos__card-container"} onClick={handleShowData}>
         <div className="general__data-element"><span>{data?.fecha}</span></div>
         <div className="data__table-title">           
-            <div className="general__data-element"><span>Despacho: </span></div>
+            <div className="general__data-element"><span>Despacho ({data?.tipo == "venta" ? <span className="plus">venta</span> : <span className="minus">compra</span>}):</span></div>
             <div className="general__data-element"><span>Total: </span></div>
             <div className="general__data-element"><span>Saldo: </span></div>
         </div>
         <div className="general__data">
             <div className="general__data-element"><span>{data?.lugarDespacho}</span></div>
             <div className="general__data-element"><span>{totalCompra.toFixed(2)} Bs.</span></div>
-            <div className="general__data-element"><span>{totalCompra > totalPagado ? (totalCompra - totalPagado).toFixed(2) + " Bs." : "Pagado"}</span></div>
+            <div className="general__data-element"><span>{totalCompra > totalPagado + 5 ? (totalCompra - totalPagado).toFixed(2) + " Bs." : "Pagado"}</span></div>
         </div>
         {
             showData
@@ -72,7 +72,7 @@ const ShowMercCard = ({data, setEditar}) => {
                     : <span>Sin Productos</span>
                 }
                 <hr />
-                <div className="totales__merc"><span>Total: {totalCompra} Bs</span></div>
+                <div className="totales__merc"><span>Total: {totalCompra.toFixed(2)} Bs</span></div>
                 <hr />
                 <div className="data__table-title"><span>Pagos</span></div>
                 <div className="data__table-title">           

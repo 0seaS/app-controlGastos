@@ -1,0 +1,29 @@
+.initial-menu__container {
+    margin: 30px auto;
+    width: 60%;
+}
+
+.menu-initial {
+    margin: 20% auto;
+    justify-content: center;
+}
+
+.menu-initial > li {
+    margin-top: 4em;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.452);
+    padding: 0.3em;
+    transition: scale .3s ease;
+}
+
+a {
+    text-decoration: none;
+}
+
+.menu-initial > li:hover {
+    scale: 1.1;
+}
+
+.menu-initial > li > h2 {
+    color: rgba(255, 227, 66, 0.849);
+}

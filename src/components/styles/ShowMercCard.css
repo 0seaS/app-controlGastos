@@ -7,3 +7,7 @@
 .totales__merc{
     text-align: right;
 }
+
+.lite-shadow {
+    background: rgba(255, 255, 255, 0.205);
+}

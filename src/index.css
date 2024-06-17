@@ -14,8 +14,8 @@ li{
 
 body{
     margin: 0;
-    background-image: url('/img/FRIDOSA\ FRIGOR\ ENDUCARNES.png');
-    background-size: cover;
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(190,37,37,1) 50%, rgba(0,0,0,1) 100%);
+    background: rgb(48, 30, 30);
     color: rgba(255, 227, 66, 0.849);
 }
 

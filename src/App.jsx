@@ -4,21 +4,20 @@ import Tiendas from './components/Tiendas'
 import './App.css'
 import { useState } from 'react'
 import Mercaderia from './components/Mercaderia'
+import { Route, Routes } from 'react-router-dom'
+import HomePage from './pages/HomePage'
 
 function App() {
 
-  const [pagSelected, setPagSelected] = useState("cajas")
 
   return (
     <>
-      <Header
-      setPagSelected={setPagSelected}
-      />
-      {
-        pagSelected == "cajas"
-        ?<Tiendas/>
-        :<Mercaderia/>
-      }
+      <Header/>
+      <Routes>
+        <Route path='/' element={<HomePage/>}></Route>
+        <Route path='/externas' element={<Mercaderia/>}></Route>
+        <Route path='/tienda/:id' element={<Tiendas/>}></Route>
+      </Routes>
     </>
   )
 }
