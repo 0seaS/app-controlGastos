@@ -6,9 +6,16 @@ import { useState } from 'react'
 import Mercaderia from './components/Mercaderia'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import useFetch from "./Hooks/useFetch.js"
+import { useEffect } from 'react'
 
 function App() {
 
+  const {startDB} = useFetch()
+
+  useEffect(() => {
+    startDB()
+  }, [])
 
   return (
     <>

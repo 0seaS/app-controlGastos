@@ -14,7 +14,6 @@ const useFetch = () => {
 
   function startDB(){
     let solicitud = indexedDB.open("control-tienda", 2);
-
     solicitud.addEventListener("error", showError);
     solicitud.addEventListener("success", start);
     solicitud.addEventListener("upgradeneeded", createDB);
@@ -42,11 +41,12 @@ const useFetch = () => {
           keyPath: "id"
       });
     }
-
     // let dataBase = e.target.result;
     // let tabla1 = dataBase.createObjectStore("caja", {keyPath: "id"});
     // startDB()
   }
+
+  // funcion que inserta los datos
 
   /*** GET ***/
 

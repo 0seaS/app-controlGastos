@@ -1,5 +1,14 @@
 import "./styles/Header.css"
+import file from "../assets/util/datosCarniceria.json"
+import useFetchMerc from "../Hooks/useFetchMerc"
+
 const Header = () => {
+
+  const {llenarData} = useFetchMerc()
+
+  function llenarDataButton() {
+    file.map((data) => {llenarData(data)})
+  }
 
   return (
     <header className="main-header">
@@ -8,9 +17,7 @@ const Header = () => {
       </div>
       <nav >
         <ul>
-            <li >Compras</li>
-            <li >Ventas</li>
-            <li >General</li>
+          <li style={{/*visibility: "hidden"*/}}><button onClick={llenarDataButton}>llenar</button></li>
         </ul>
       </nav>
         

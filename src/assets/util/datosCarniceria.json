@@ -1,0 +1,652 @@
+[
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Matadero",
+        "productos": [
+            {
+                "descripcion": "Patas",
+                "cantidad": 28,
+                "precio": 17.5
+            },
+            {
+                "descripcion": "Higado",
+                "cantidad": 11.2,
+                "precio": 9
+            },
+            {
+                "descripcion": "Corazon",
+                "cantidad": 13,
+                "precio": 20
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 850.8
+            }
+        ],
+        "id": "04bf5a53c612494a8803016e9d6f5378"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Villa",
+        "productos": [
+            {
+                "descripcion": "pollo G",
+                "cantidad": 146.1,
+                "precio": 13
+            },
+            {
+                "descripcion": "Pollo E",
+                "cantidad": 141.6,
+                "precio": 13.5
+            },
+            {
+                "descripcion": "Cola",
+                "cantidad": 42,
+                "precio": 15
+            },
+            {
+                "descripcion": "Chorizo picante",
+                "cantidad": 5,
+                "precio": 36.5
+            },
+            {
+                "descripcion": "Chorizo ahumado",
+                "cantidad": 5,
+                "precio": 39
+            },
+            {
+                "descripcion": "Chorizo churrasquero",
+                "cantidad": 5,
+                "precio": 37.5
+            },
+            {
+                "descripcion": "Salchicha bonissima",
+                "cantidad": 2,
+                "precio": 46
+            },
+            {
+                "descripcion": "Kawi",
+                "cantidad": 33.5,
+                "precio": 25
+            },
+            {
+                "descripcion": "Hueso",
+                "cantidad": 20.2,
+                "precio": 6
+            },
+            {
+                "descripcion": "Lomo",
+                "cantidad": 253.5,
+                "precio": 26
+            }
+        ],
+        "pagos": [],
+        "id": "08a464732f224fa1a4a6c48dff3bbaa6"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Sofia Ltda",
+        "productos": [
+            {
+                "descripcion": "Chorizo churrasquero",
+                "cantidad": 5,
+                "precio": 35.27
+            },
+            {
+                "descripcion": "Chorizo ahumado",
+                "cantidad": 5,
+                "precio": 36.93
+            },
+            {
+                "descripcion": "Chorizo picante",
+                "cantidad": 5,
+                "precio": 34.25
+            },
+            {
+                "descripcion": "Salchicha bonissima",
+                "cantidad": 52,
+                "precio": 43.5
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 2794.25
+            }
+        ],
+        "id": "2193048569b74443bb8386d7864c0c29"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Inducarne",
+        "productos": [
+            {
+                "descripcion": "Giba",
+                "cantidad": 43,
+                "precio": 33
+            },
+            {
+                "descripcion": "Pecho Kawi",
+                "cantidad": 54,
+                "precio": 29
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 2985
+            }
+        ],
+        "id": "250f5b63554f42b99a21fd62b8dfcd28"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Eterazama",
+        "productos": [
+            {
+                "descripcion": "Salchicha bonissima",
+                "cantidad": 50,
+                "precio": 49
+            }
+        ],
+        "pagos": [],
+        "id": "2a149f71ddee4c81b5e306a5c1bcd182"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Dora",
+        "productos": [
+            {
+                "descripcion": "Pollo",
+                "cantidad": 74.4,
+                "precio": 16
+            }
+        ],
+        "pagos": [],
+        "id": "408d3fd8742442688e26cdf8a57fb7e0"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Villa",
+        "productos": [
+            {
+                "descripcion": "Queso",
+                "cantidad": 8.9,
+                "precio": 25
+            },
+            {
+                "descripcion": "Costilla vacio",
+                "cantidad": 19.4,
+                "precio": 30
+            },
+            {
+                "descripcion": "Corazon",
+                "cantidad": 13.3,
+                "precio": 22
+            },
+            {
+                "descripcion": "Higado",
+                "cantidad": 5.3,
+                "precio": 12
+            },
+            {
+                "descripcion": "Giba",
+                "cantidad": 16.4,
+                "precio": 36
+            },
+            {
+                "descripcion": "Costilla",
+                "cantidad": 13.5,
+                "precio": 27
+            },
+            {
+                "descripcion": "Pecho",
+                "cantidad": 54,
+                "precio": 31
+            },
+            {
+                "descripcion": "Ganado",
+                "cantidad": 238,
+                "precio": 26
+            },
+            {
+                "descripcion": "Patas",
+                "cantidad": 8,
+                "precio": 19.5
+            }
+        ],
+        "pagos": [],
+        "id": "53777bed74144448a860eba88816bba6"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Eva",
+        "productos": [
+            {
+                "descripcion": "Patas",
+                "cantidad": 20,
+                "precio": 20
+            },
+            {
+                "descripcion": "Giba",
+                "cantidad": 26.6,
+                "precio": 36
+            },
+            {
+                "descripcion": "Ganado",
+                "cantidad": 253,
+                "precio": 26
+            },
+            {
+                "descripcion": "Costillas",
+                "cantidad": 45.1,
+                "precio": 27
+            },
+            {
+                "descripcion": "Vacio",
+                "cantidad": 16.9,
+                "precio": 30
+            },
+            {
+                "descripcion": "Queso",
+                "cantidad": 8.7,
+                "precio": 25
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 3680
+            }
+        ],
+        "id": "5602d6d1bb994d05915b065cdbc49b9d"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Helen",
+        "productos": [
+            {
+                "descripcion": "Lomo",
+                "cantidad": 61.4,
+                "precio": 24
+            },
+            {
+                "descripcion": "Hueso blanco",
+                "cantidad": 20.2,
+                "precio": 4
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 1554.4
+            }
+        ],
+        "id": "5b6ae73b02c4400687807c4d1fd867a1"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Santa Cruz",
+        "productos": [
+            {
+                "descripcion": "Costilla sin Faldita",
+                "cantidad": 59.1,
+                "precio": 25
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 1477.5
+            }
+        ],
+        "id": "5d25c68771c64bf4aa5ab81c2433f1f6"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Yancarla",
+        "productos": [
+            {
+                "descripcion": "Lomo",
+                "cantidad": 76.7,
+                "precio": 24
+            },
+            {
+                "descripcion": "Blanda",
+                "cantidad": 14.5,
+                "precio": 30
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 2275.8
+            }
+        ],
+        "id": "7871910318bd4c8083625f3edd7573b9"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Chaqueno",
+        "productos": [
+            {
+                "descripcion": "pollo",
+                "cantidad": 88,
+                "precio": 16
+            }
+        ],
+        "pagos": [],
+        "id": "7e780f0b07dc411fa3d4b4d9e306fdf5"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Mariela",
+        "productos": [
+            {
+                "descripcion": "cola",
+                "cantidad": 42,
+                "precio": 13
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 546
+            }
+        ],
+        "id": "82cf69cab54d44d8ba343c4aadb1f856"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Don Pedro",
+        "productos": [
+            {
+                "descripcion": "Lomo",
+                "cantidad": 25.6,
+                "precio": 24
+            },
+            {
+                "descripcion": "Blanda",
+                "cantidad": 13.8,
+                "precio": 30
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 1028.4
+            }
+        ],
+        "id": "87bf9f06a26c43e4a97885185652dcec"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Mama Yona",
+        "productos": [
+            {
+                "descripcion": "Lomo",
+                "cantidad": 22.2,
+                "precio": 24
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 532.8
+            }
+        ],
+        "id": "8a4c509c69e947da967825454cd7594b"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Chimore",
+        "productos": [
+            {
+                "descripcion": "Pollo E",
+                "cantidad": 144.3,
+                "precio": 13.5
+            },
+            {
+                "descripcion": "Pollo G",
+                "cantidad": 255.9,
+                "precio": 13
+            },
+            {
+                "descripcion": "Menudo",
+                "cantidad": 17.9,
+                "precio": 5
+            }
+        ],
+        "pagos": [],
+        "id": "a19ba879c43049cb88f010e7451056f7"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Productor agropecuario",
+        "productos": [
+            {
+                "descripcion": "Pollo extra grande",
+                "cantidad": 344,
+                "precio": 12.5
+            },
+            {
+                "descripcion": "pollo grande",
+                "cantidad": 514.7,
+                "precio": 12
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 10476.4
+            }
+        ],
+        "id": "aa492ee0d82141ce9f585adf83d63211"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Santa Cruz",
+        "productos": [
+            {
+                "descripcion": "Ganado Shinahota",
+                "cantidad": 244,
+                "precio": 23.69
+            },
+            {
+                "descripcion": "Ganado Chimore",
+                "cantidad": 241,
+                "precio": 23.69
+            },
+            {
+                "descripcion": "Ganado Eva",
+                "cantidad": 253,
+                "precio": 23.69
+            },
+            {
+                "descripcion": "Ganado Villa",
+                "cantidad": 238,
+                "precio": 23.69
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 23121.44
+            }
+        ],
+        "id": "c5f7bf5781764c4c88d3c1cb8b7e77b0"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Santa Cruz",
+        "productos": [
+            {
+                "descripcion": "Costilla",
+                "cantidad": 209,
+                "precio": 22.9
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 4786.1
+            }
+        ],
+        "id": "c6823aaeb5b4401096718bc5c8b02558"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Mercado",
+        "productos": [
+            {
+                "descripcion": "Queso",
+                "cantidad": 44.2,
+                "precio": 23
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 1016.6
+            }
+        ],
+        "id": "d18af253ed284f0d9fef1174fc7b11ac"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Shinahota",
+        "productos": [
+            {
+                "descripcion": "Ganado",
+                "cantidad": 244,
+                "precio": 25.99
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-27",
+                "monto": 6341.56
+            }
+        ],
+        "id": "d50dba9099d247afa512cf7871b4803d"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-27",
+        "lugarDespacho": "Chimore",
+        "productos": [
+            {
+                "descripcion": "Ganado",
+                "cantidad": 241,
+                "precio": 26
+            },
+            {
+                "descripcion": "Queso",
+                "cantidad": 26.5,
+                "precio": 25
+            },
+            {
+                "descripcion": "Costillar",
+                "cantidad": 152.1,
+                "precio": 27
+            },
+            {
+                "descripcion": "Higado",
+                "cantidad": 5.8,
+                "precio": 12
+            },
+            {
+                "descripcion": "Costilla vacio",
+                "cantidad": 23.3,
+                "precio": 30
+            }
+        ],
+        "pagos": [],
+        "id": "dbb0da217a104e17a1938f7a30c4ea76"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "compra",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Gabi",
+        "productos": [
+            {
+                "descripcion": "kawi",
+                "cantidad": 33.5,
+                "precio": 23
+            },
+            {
+                "descripcion": "Lomo",
+                "cantidad": 67.6,
+                "precio": 24
+            }
+        ],
+        "pagos": [
+            {
+                "fecha": "2023-09-30",
+                "monto": 2392.9
+            }
+        ],
+        "id": "f47b2c2ca3cb4aca99768d4ce4369ba0"
+    },
+    {
+        "sucursal": "externas",
+        "tipo": "venta",
+        "fecha": "2023-09-30",
+        "lugarDespacho": "Eva",
+        "productos": [
+            {
+                "descripcion": "Blanda",
+                "cantidad": 28.3,
+                "precio": 33
+            }
+        ],
+        "pagos": [],
+        "id": "fa9f41b2e5c447679abdec67ac466ea0"
+    }
+]

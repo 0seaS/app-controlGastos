@@ -31,6 +31,30 @@ const useFetchMerc = () => {
         }
     }
 
+    function llenarData(data){
+        data.productos = data.productos.map(data => Object.values(data)).toString()
+        data.pagos = data.pagos.map(data => Object.values(data)).toString()
+
+        var request = indexedDB.open("control-tienda");
+        request.onsuccess = function(e) {
+            let db =  e.target.result;
+            let transaction = db.transaction("compras", "readwrite");
+            transaction.oncomplete = ev => {
+            };
+            transaction.onerror = err => console.log(err)
+            let store = transaction.objectStore('compras');
+            let request = store.add(data);
+        
+            request.onsuccess = ev => {
+                console.log('REGISTRO INSERTADO')
+            };
+            request.onerror = err => {
+            console.log(err);
+            };
+        }
+        
+    }
+
     function getData(){
         var request = indexedDB.open("control-tienda");
         request.onsuccess = function(e) {
@@ -46,7 +70,7 @@ const useFetchMerc = () => {
                 /*** Esta parte cambia los gastos por un arreglo de objetos ***/
                 let dataTrasform = dataApiBD.result
                 dataTrasform.forEach(element => {
-                    console.log(element.pagos)
+                    //console.log(element.pagos)
                 let auxPagos = element.pagos == "" ? [] : toObj2(element.pagos.split(','))
                 let auxProductos = element.productos == "" ? [] : toObj3(element.productos.split(','))
                 element.pagos = auxPagos
@@ -119,7 +143,7 @@ const useFetchMerc = () => {
         return uuid;
     }
 
-  return {data, createRegisterMerc, getData, deleteData, edidtRegister}
+  return {data, createRegisterMerc, getData, deleteData, edidtRegister, llenarData}
 
 }
 
