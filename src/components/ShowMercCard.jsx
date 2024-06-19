@@ -53,8 +53,8 @@ const ShowMercCard = ({data, setEditar}) => {
             ? <div>
                 <hr />
                 <div className="data__table-title"><span>Productos</span></div>
-                <div className="data__table-title">           
-                    <div className="general__data-element"><span>Nombre </span></div>
+                <div className="data__table-title-products">           
+                    <div className="general__data-element"><span>Nombre del producto </span></div>
                     <div className="general__data-element"><span>Cantidad </span></div>
                     <div className="general__data-element"><span>Precio U. </span></div>
                     <div className="general__data-element"><span>Precio </span></div>

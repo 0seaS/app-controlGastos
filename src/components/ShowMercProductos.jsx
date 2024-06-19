@@ -1,4 +1,4 @@
-
+import "./styles/ShowMercProductos.css"
 
 const ShowMercProductos = ({data}) => {
   return (

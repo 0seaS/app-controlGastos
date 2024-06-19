@@ -1,6 +1,7 @@
 import "./styles/Header.css"
 import file from "../assets/util/datosCarniceria.json"
 import useFetchMerc from "../Hooks/useFetchMerc"
+import { Link } from "react-router-dom"
 
 const Header = () => {
 
@@ -13,9 +14,9 @@ const Header = () => {
   return (
     <header className="main-header">
       <div className="logo-container">
-        <img className="logo" src="/img/logo.jpeg" alt="" />
+        <Link to="/"><img className="logo" src="/img/logo.jpeg" alt="" /></Link>       
       </div>
-      <nav >
+      <nav className="llenar-data">
         <ul>
           <li style={{/*visibility: "hidden"*/}}><button onClick={llenarDataButton}>llenar</button></li>
         </ul>

@@ -108,22 +108,30 @@ const ShowMerc = ({setEditar}) => {
         </section>
         {typeMerc == 'todos' ?
         <>
-        <div className="total__cajas minus">Total Compras: {totalCompras?.toFixed(2)} Bs.</div>
-        <div className="total__cajas">Total Ventas: {totalVentas?.toFixed(2)} Bs.</div>
-        <div className="total__cajas plus big">Ganancia: {(totalVentas-totalCompras)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas">Pagado: {pagadoCompras?.toFixed(2)} Bs.</div>
+        <div className="total__cajas minus">Por Pagar: {(totalCompras - pagadoCompras)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas lost big">Total Gastos: {totalCompras?.toFixed(2)} Bs.</div>
+        <hr />
+        <div className="total__cajas plus">Recivido: {pagadoVentas?.toFixed(2)} Bs.</div>
+        <div className="total__cajas minus">Por Cobrar: {(totalVentas - pagadoVentas)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas plus big">Total Ingresos: {totalVentas?.toFixed(2)} Bs.</div>
+        <hr />
+        <hr />
+        <div className={pagadoVentas-pagadoCompras > 0 ? "total__cajas plus big" : "total__cajas lost big"}>Total en Caja: {(pagadoVentas-pagadoCompras)?.toFixed(2)} Bs.</div>
+        <div className={totalVentas-totalCompras > 0 ? "total__cajas plus big" : "total__cajas lost big"}>Ganancia Estimada: {(totalVentas-totalCompras)?.toFixed(2)} Bs.</div>
         </>
          : 
          typeMerc == 'venta' ?
         <>
-        <div className="total__cajas">Pagado: {pagadoVentas?.toFixed(2)} Bs.</div>
-        <div className="total__cajas">Saldo: {(totalVentas - pagadoVentas)?.toFixed(2)} Bs.</div>
-        <div className="total__cajas">Total Ventas: {totalVentas?.toFixed(2)} Bs.</div>
+        <div className="total__cajas plus">Recivido: {pagadoVentas?.toFixed(2)} Bs.</div>
+        <div className="total__cajas minus">Por Cobrar: {(totalVentas - pagadoVentas)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas plus big">Total Ingresos: {totalVentas?.toFixed(2)} Bs.</div>
         </>
          :
         <>
         <div className="total__cajas">Pagado: {pagadoCompras?.toFixed(2)} Bs.</div>
-        <div className="total__cajas">Saldo: {(totalCompras - pagadoCompras)?.toFixed(2)} Bs.</div>
-        <div className="total__cajas">Total Compras: {totalCompras?.toFixed(2)} Bs.</div>
+        <div className="total__cajas minus">Saldo: {(totalCompras - pagadoCompras)?.toFixed(2)} Bs.</div>
+        <div className="total__cajas lost big">Total Gastos: {totalCompras?.toFixed(2)} Bs.</div>
         </>
          }
     </article>

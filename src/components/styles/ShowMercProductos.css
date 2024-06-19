@@ -1,0 +1,32 @@
+.bodycard__gastos {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bodycard__gastos > span {
+    width: 20%;
+    text-align: right;
+}
+
+.bodycard__gastos > :nth-child(1) {
+    width: 40%;
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px)  {
+    .bodycard__gastos > :nth-child(2) {
+        visibility: hidden;
+        width: 0;
+    }
+    .bodycard__gastos > :nth-child(3) {
+        visibility: hidden;
+        width: 0;
+    }
+    .bodycard__gastos > :nth-child(1) {
+        width: 60%;
+    }
+    .bodycard__gastos > :nth-child(4) {
+        width: 40%;
+    }
+}

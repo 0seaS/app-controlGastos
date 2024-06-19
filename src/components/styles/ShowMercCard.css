@@ -4,11 +4,79 @@
     color: red;
 }
 
+.general__data {
+    width: 100%;
+    display: flex;
+}
+
+.general__data > .general__data-element{
+    text-align: left;
+    width: 25%;
+}
+
+.general__data > :first-child{
+    width: 50%;
+}
+
+.general__data > :last-child{
+    text-align: right;
+    justify-content: right;
+}
+
 .totales__merc{
     text-align: right;
 }
 
 .lite-shadow {
     background: rgba(255, 255, 255, 0.205);
+}
+
+.data__table-title-products {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    color: red;
+}
+.data__table-title-products > div {
+    width: 20%;
+    justify-content: right;
+}
+
+.data__table-title-products > :nth-child(1) {
+    width: 40%;
+    justify-content: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .general__data > :nth-child(3){
+        visibility: hidden;
+        width: 0;
+    }
+    .general__data > :nth-child(2){
+        justify-content: right;
+        width: 40%;
+    }
+    .data__table-title >:nth-child(3){
+        visibility: hidden;
+        width: 0;
+    }
+    .data__table-title >:nth-child(2){
+        justify-content: right;
+    }
+
+    .data__table-title-products > :nth-child(1) {
+        width: 60%;
+    }
+    .data__table-title-products > :nth-child(4) {
+        width: 40%;
+    }
+    .data__table-title-products > :nth-child(3) {
+        visibility: hidden;
+        width: 0%;
+    }
+    .data__table-title-products > :nth-child(2) {
+        visibility: hidden;
+        width: 0%;
+    }
 }
 
